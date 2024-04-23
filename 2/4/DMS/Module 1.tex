@@ -4,8 +4,25 @@
 \usepackage[margin=.5in]{geometry}
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% detailes
+\author{koku17}
+\title{Mathematical Logic}
+
+% presets
+\pagecolor{black}
+\color{white}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=white
+}
 
 \begin{document}
+	\maketitle \thispagestyle{empty} \newpage
+	\tableofcontents \thispagestyle{empty} \newpage
+	\setcounter{page}{1}
 	\section{Basic Connectives and Truth Tables}
 	\subsection{Definition}
 	\subsubsection{Logic}
@@ -15,7 +32,7 @@
 	\begin{itemize}
 		\item It is a statement, which in a given context, can be to either true or false, but not both
 		\item Proposition are usually denoted by small letters such as $p,q,r,s,\cdots$
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \text{Banglore is in Karnataka}$ \\
 			$q : \text{2 is a prime number}$
 	\end{itemize}
@@ -25,7 +42,7 @@
 		\item The truth or falsity of a proposition is called it's truth value
 		\item If a proposition is true, we will indicate the truth value by \textbf{1} and
 			if it is false denoted by the value \textbf{0}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \text{3 is a prime number}$ (The value for $p$ is 1) \\
 			$q : \text{Every rectangle is a square}$ (The value for $q$ is 0)
 	\end{itemize}
@@ -55,7 +72,7 @@
 					0 & 1 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \text{3 is a prime number}$ \\
 			$q : \text{3 is \textbf{not} a prime number}$
 	\end{itemize} \newpage
@@ -77,7 +94,7 @@
 					1 & 1 & 1 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
 			$q : 9\text{ is prime number (0)}$ \\
 			$p\land q=0$
@@ -100,10 +117,10 @@
 					1 & 1 & 1 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
 			$q : 9\text{ is prime number (0)}$ \\
-			$p\land q=1$
+			$p\lor q=1$
 	\end{itemize}
 
 	\subsubsection{Exclusive Disjunction $(\veebar)$}
@@ -121,7 +138,7 @@
 					1 & 1 & 0 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
 			$q : 3\text{ is prime number (1)}$ \\
 			$p\veebar q=0$
@@ -146,7 +163,7 @@
 					1 & 1 & 1 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \text{2 is prime number (1)}$ \\
 			$p : \text{4 is prime number (0)}$ \\
 			$p\to q=0$
@@ -172,7 +189,7 @@
 					1 & 1 & 1 & 1 & 1 \\ \hline
 				\end{tabular}
 			\end{center}
-		\item \textbf{Example} \\
+		\item [] \textbf{Example} \\
 			$p : \text{2 is prime number (1)}$ \\
 			$p : \text{4 is prime number (0)}$ \\
 			$p\leftrightarrow q=0$
