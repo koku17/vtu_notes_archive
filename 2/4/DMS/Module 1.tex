@@ -44,7 +44,7 @@
 	\begin{itemize}
 		\item A proposition obtained by inserting the word \textbf{not} at an appropriate place in a
 			given proposition is called negation of the given proposition
-		\item It is denoted by $\neg$ read as not $p$
+		\item It is denoted by $\neg$, read as not $p$
 		\item If the truth value of proposition $p$ is 1, then truth table value of it's negation is 0
 			and if the truth value of $p$ is 0, then the truth value of it's negation is 1
 			\begin{center}
@@ -58,9 +58,126 @@
 		\item \textbf{Example} \\
 			$p : \text{3 is a prime number}$ \\
 			$q : \text{3 is \textbf{not} a prime number}$
-	\end{itemize}
+	\end{itemize} \newpage
 
 	\subsubsection{Conjunction $(\land)$}
+	\begin{itemize}
+		\item A compound proposition obtained by combining two given proposition by inserting the word
+			\textbf{and} in between them, is called Conjunction
+		\item It is denoted by $\land$, i.e $p\land q$ read as $p$ and $q$
+		\item The conjunction $p\land q$ is true only when both $p$ \& $q$ are true, otherwise it is
+			false
+			\begin{center}
+				Truth Table \\ \vspace{1em}
+				\begin{tabular}{|c|c|c|} \hline
+					$p$ &  $q$ & $p\land q$ \\ \hline
+					0 & 0 & 0 \\
+					0 & 1 & 0 \\
+					1 & 0 & 0 \\
+					1 & 1 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item \textbf{Example} \\
+			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
+			$q : 9\text{ is prime number (0)}$ \\
+			$p\land q=0$
+	\end{itemize}
+
+	\subsubsection{Disjunction $(\lor)$}
+	\begin{itemize}
+		\item A compound proposition obtained by combining two given proposition by inserting the word
+			\textbf{or} in between them, is called Disjunction
+		\item It is denoted by $\lor$, i.e $p\lor q$ read as $p$ and $q$
+		\item The disjunction $p\lor q$ is false only when both $p$ \& $q$ are false, otherwise it is
+			true
+			\begin{center}
+				Truth Table \\ \vspace{1em}
+				\begin{tabular}{|c|c|c|} \hline
+					$p$ &  $q$ & $p\land q$ \\ \hline
+					0 & 0 & 0 \\
+					0 & 1 & 1 \\
+					1 & 0 & 1 \\
+					1 & 1 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item \textbf{Example} \\
+			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
+			$q : 9\text{ is prime number (0)}$ \\
+			$p\land q=1$
+	\end{itemize}
+
+	\subsubsection{Exclusive Disjunction $(\veebar)$}
+	\begin{itemize}
+		\item A compound proposition obtained by combining two given proposition by inserting the word
+			\textbf{or} in between them, is called Exclusive Disjunction
+		\item The disjunction $p\veebar q$ is true only either $p$ or $q$ is true, but not both
+			\begin{center}
+				Truth Table \\ \vspace{1em}
+				\begin{tabular}{|c|c|c|} \hline
+					$p$ &  $q$ & $p\veebar q$ \\ \hline
+					0 & 0 & 0 \\
+					0 & 1 & 1 \\
+					1 & 0 & 1 \\
+					1 & 1 & 0 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item \textbf{Example} \\
+			$p : \sqrt{2}\text{ is irrational number (1)}$ \\
+			$q : 3\text{ is prime number (1)}$ \\
+			$p\veebar q=0$
+	\end{itemize}
+
+	\subsubsection{Conditional $(\to)$}
+	\begin{itemize}
+		\item A compound proposition obtained by combining two given proposition by using the words
+			\textbf{if then} is called Conditional
+		\item For a given two proposition $p$ \& $q$
+			\begin{itemize}
+				\item if $p$ then $q$ is denoted by $p\to q$
+				\item The conditional $p\to q$ is false, only when $p$ is true and $q$ is
+					false, otherwise true
+			\end{itemize}
+			\begin{center}
+				\begin{tabular}{|c|c|c|} \hline
+					$p$ & $q$ & $p\to q$ \\ \hline
+					0 & 0 & 1 \\
+					0 & 1 & 1 \\
+					1 & 0 & 0 \\
+					1 & 1 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item \textbf{Example} \\
+			$p : \text{2 is prime number (1)}$ \\
+			$p : \text{4 is prime number (0)}$ \\
+			$p\to q=0$
+	\end{itemize}
+
+	\subsubsection{BiConditional $(\leftrightarrow)$}
+	\begin{itemize}
+		\item A compound proposition obtained by combining two given proposition by using the words
+			\textbf{if and only if} is called BiConditional
+		\item For a given two proposition $p$ \& $q$,
+			\begin{itemize}
+				\item if $p$ then $q$ and if $q$ then $p$, is denoted by $p\leftrightarrow q$
+					or $(p\to q)\land(q\to p)$
+			\end{itemize}
+		\item The bi-conditional $p$ if and only if $q$ is true, if it is only when both $p$ and $q$
+			are true or both $p$ and $q$ are false
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|} \hline
+					$p$ & $q$ & $p\to q$ & $q\to p$ & $p\leftrightarrow q$ \\ \hline
+					0 & 0 & 1 & 1 & 1 \\
+					0 & 0 & 1 & 0 & 0 \\
+					1 & 0 & 0 & 1 & 0 \\
+					1 & 1 & 1 & 1 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item \textbf{Example} \\
+			$p : \text{2 is prime number (1)}$ \\
+			$p : \text{4 is prime number (0)}$ \\
+			$p\leftrightarrow q=0$
+	\end{itemize}
+
 	\section{Logic Equivalence $-$ The Laws of Logic}
 
 	\section{Logical Implication $–$ Rules of Inference}
