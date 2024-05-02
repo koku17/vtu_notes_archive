@@ -1,0 +1,130 @@
+\documentclass{article}
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+% detailes
+\author{koku17}
+\title{Mathematical Logic}
+
+% presets
+\pagecolor{black}
+\color{white}
+
+% macro
+\newcommand{\answer}{\item [$\rightarrow$]}
+
+\begin{document}
+	\maketitle \thispagestyle{empty} \newpage \setcounter{page}{1}
+	\begin{enumerate}[label=\arabic*. ]
+		\item Let $p$ \& $q$ be primitive statements for which $p\to q$ is false. Find the truth value
+			of following compound propositions
+			\begin{enumerate}[label=\roman*) ]
+				\item $p\land q$
+				\item $\neg p\land q$
+				\item $q\to p$
+				\item $\neg p\veebar\neg q$
+				\item $\neg p\to\neg q$
+			\end{enumerate}
+		\answer $p\to q$ is fasle \\ $\Longrightarrow (p,q)=(1,0)$
+			\begin{enumerate}[label=\roman*) ]
+				\item $1\land0=0$ \\ $\therefore$ Truth value for $p\land q$ is 0
+				\item $\neg1\land0=0\land0=0$ \\ $\therefore$ Truth value for $\neg p\land q$ is
+					0
+				\item $0\to1=1$ \\ $\therefore$ Truth value for $q\to p$ is 1
+				\item $\neg1\veebar\neg0=0\veebar1=1$ \\ $\therefore$ Truth value for
+					$\neg p\veebar\neg q$ is 1
+				\item $\neg0\to\neg1=1\to0=0$ \\ $\therefore$ Truth value for $\neg p\to\neg q$
+					is 0
+			\end{enumerate}
+		\item Let $p$, $q$ \& $r$ be proposition having Truth values $(0,0,1)$ 0, 0 and 1 respectively
+			\\ Find the Truth value of the follwoing compound propositions
+			\begin{enumerate}[label=\roman*) ]
+				\item $(p\lor q)\to r$
+				\item $(p\land q)\land r$
+				\item $p\to(q\veebar r)$
+				\item $p\to(q\to\neg r)$
+				\item $p\leftrightarrow q$
+				\item $(p\lor q)\lor r$
+				\item $p\land q\to r$
+			\end{enumerate}
+		\answer ~ \vspace{-1.5em}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+					$p$ & $q$ & $r$ & $(p\lor q)\to r$ & $(p\land q)\land r$ &
+					$p\to(q\veebar r)$ & $p\to(q\to\neg r)$ & $p\leftrightarrow q$ &
+					$(p\lor q)\lor r$ & $p\land q\to r$  \\ \hline
+					0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+			$\therefore$ Truth value of \\ \null \\ \newcounter{counter}
+			\setcounter{counter}{1}
+			\begin{tabular}{rll}
+				\roman{counter}) & $(p\lor q)\to r$	& is 1 \\ \stepcounter{counter}
+				\roman{counter}) & $(p\land q)\land r$	& is 0 \\ \stepcounter{counter}
+				\roman{counter}) & $p\to(q\veebar r)$	& is 1 \\ \stepcounter{counter}
+				\roman{counter}) & $p\to(q\to\neg r)$	& is 1 \\ \stepcounter{counter}
+				\roman{counter}) & $p\leftrightarrow q$	& is 1 \\ \stepcounter{counter}
+				\roman{counter}) & $(p\lor q)\lor r$	& is 1 \\ \stepcounter{counter}
+				\roman{counter}) & $p\land q\to r$	& is 1
+			\end{tabular} \newpage
+		\item Construct the truth table for the following compound propositions
+			\begin{enumerate}[label=\roman*) ]
+				\item $(p\lor q)\land r$
+				\item $p\lor(q\land r)$
+				\item $(p\land q)\to\neg r$
+				\item $q\land(\neg r\to p)$
+			\end{enumerate}
+		\answer ~ \vspace{-1.5em}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+					$p$ & $q$ & $r$ & $(p\lor q)\land r$ & $p\lor(q\land r)$ &
+					$(p\land q)\to\neg r$ & $q\land(\neg r\to p)$ \\ \hline
+					0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+					0 & 0 & 1 & 0 & 0 & 1 & 0 \\
+					0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+					0 & 1 & 1 & 1 & 1 & 1 & 1 \\
+					1 & 0 & 0 & 0 & 1 & 1 & 0 \\
+					1 & 0 & 1 & 1 & 1 & 1 & 0 \\
+					1 & 1 & 0 & 0 & 1 & 1 & 1 \\
+					1 & 1 & 1 & 1 & 1 & 0 & 1 \\ \hline
+				\end{tabular}
+			\end{center}
+		\item If proposition $q$ as the Truth value 1. Find all the Truth value for given Primitive
+			Propositions
+			$p$, $r$ and $s$ for which Truth value of the following compound proposition is 1.
+			\textbf{[MPQ]}
+			$$[q\to(\neg p\lor r)\land\neg r]\land[\neg s\leftrightarrow(\neg r\land q)]$$
+		\answer Since the give propositon is equal to 1
+			\begin{itemize}[label=$\Longrightarrow$ ]
+				\item $[q\to(\neg p\lor r)\land\neg r]
+					\land[\neg s\leftrightarrow(\neg r\land q)]=1$
+				\item $[q\to(\neg p\lor r)\land\neg r]=1$ \hfill (1)
+				\item $[\neg s\leftrightarrow(\neg r\land q)]=1$ \hfill (2)
+				\item [] Substitue $q=1$ in (1)
+				\item $[1\to(\neg p\lor r)\land\neg r]=1$
+				\item $1\to(\neg p\lor r)=1$ \hfill (3)
+				\item $\neg r=1$ \hfill (4)
+				\item [] From (4)
+				\item $\neg r=1$
+				\item \boxed{r=0}
+				\item [] From (3) and substitute $r=0$
+				\item $\neg p\lor r=1$
+				\item $\neg p\lor 0=1$
+				\item $\neg p=1$
+				\item \boxed{p=0}
+				\item [] From (2) and substitute $r=0$
+				\item $\neg s\leftrightarrow\neg r=1$
+				\item $\neg s\leftrightarrow\neg0=1$
+				\item $\neg s\leftrightarrow1=1$
+				\item $1\to \neg s\land\neg s\to 1=1$
+				\item $1\to\neg s=1$
+				\item $\neg s=1$
+				\item \boxed{s=0}
+			\end{itemize}
+			$\therefore$ value of $(p,q,r)=(0,0,0)$
+	\end{enumerate}
+\end{document}
