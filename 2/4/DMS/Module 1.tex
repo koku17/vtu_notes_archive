@@ -169,7 +169,7 @@
 			$p\to q=0$
 	\end{itemize}
 
-	\subsubsection{BiConditional $(\leftrightarrow)$}
+	\subsubsection{Bi-Conditional $(\leftrightarrow)$}
 	\begin{itemize}
 		\item A compound proposition obtained by combining two given proposition by using the words
 			\textbf{if and only if} is called BiConditional
@@ -195,7 +195,101 @@
 			$p\leftrightarrow q=0$
 	\end{itemize}
 
-	\section{Logic Equivalence $-$ The Laws of Logic}
+	\subsection{Tautology, Contradiction \& Contingency}
+	\subsubsection{Tautology}
+	A compound proposition which is true $\forall$ possible truth values of it's components
+
+	\subsubsection{Contradiction (Absurdity)}
+	A compound proposition which is false $\forall$ possible truth values of it's components
+
+	\subsubsection{Contingency}
+	A compound proposition that can be true or false depending upon the truth value of it's components
+
+	\section{Logic Equivalence and Laws of Logic}
+	\subsection{Logic Equivalence $(\Rightarrow ~ \Leftrightarrow)$}
+	\begin{itemize}
+		\item Two propositions are said to be logically equivalent whenever both propositions have same
+			truth values
+		\item The Bi-Conditional value of logically equivalent propositions is always tautology
+		\item If Bi-Conditional value of logically equivalent propositions is not tautology, then it is
+			said to be not logically \\ equivalent $(\not\Leftrightarrow)$
+	\end{itemize}
+
+	\subsection{Laws of Logic}
+	Laws of logic are used to simplify the logical expressions. In these laws
+	\begin{enumerate}[label=\roman*) ]
+		\item T$_0$ is tautology
+		\item F$_0$ is contradiction
+	\end{enumerate}
+
+	\subsubsection{Law of Double Negation}
+	For any proposition $p$
+	\begin{enumerate}[label=\roman*) ]
+		\item $\neg(\neg p)\leftrightarrow p$
+	\end{enumerate}
+
+	\subsubsection{Idempotent Law}
+	For any proposition $p$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor p\leftrightarrow p$
+		\item $p\land p\leftrightarrow p$
+	\end{enumerate}
+
+	\subsubsection{Identity Law}
+	For any proposition $p$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor \text{F}_0\leftrightarrow p$
+		\item $p\land \text{T}_0\leftrightarrow p$
+	\end{enumerate}
+
+	\subsubsection{Inverse Law}
+	For any proposition $p$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor\neg p\leftrightarrow \text{T}_0$
+		\item $p\land\neg p\leftrightarrow \text{F}_0$
+	\end{enumerate}
+
+	\subsubsection{Domination Law}
+	For any proposition $p$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor \text{T}_0\leftrightarrow \text{T}_0$
+		\item $p\land \text{F}_0\leftrightarrow \text{F}_0$
+	\end{enumerate}
+
+	\subsubsection{Commutative Law}
+	For any two propositions $p$ \& $q$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor q\leftrightarrow q\lor p$
+		\item $p\land q\leftrightarrow q\land p$
+	\end{enumerate}
+
+	\subsubsection{Absorption Law}
+	For any two propositions $p$ \& $q$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\land(p\lor q)\leftrightarrow p$
+		\item $p\lor(p\land q)\leftrightarrow p$
+	\end{enumerate}
+
+	\subsubsection{D\`{e} Morgan's Law}
+	For any two propositions $p$ \& $q$
+	\begin{enumerate}[label=\roman*) ]
+		\item $\neg(p\lor q)\leftrightarrow\neg p\land\neg q$
+		\item $\neg(p\land q)\leftrightarrow\neg p\lor\neg q$
+	\end{enumerate}
+
+	\subsubsection{Associative Law}
+	For any three propositions $p$, $q$ \& $r$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\land(q\land r)\leftrightarrow (p\land q)\land r$
+		\item $p\lor(q\lor r)\leftrightarrow (p\lor q)\lor r$
+	\end{enumerate}
+
+	\subsubsection{Distributive Law}
+	For any three propositions $p$, $q$ \& $r$
+	\begin{enumerate}[label=\roman*) ]
+		\item $p\lor(q\land r)\leftrightarrow (p\lor q)\land(p\lor r)$
+		\item $p\land(q\lor r)\leftrightarrow (p\land q)\lor(p\land r)$
+	\end{enumerate}
 
 	\section{Logical Implication $–$ Rules of Inference}
 
