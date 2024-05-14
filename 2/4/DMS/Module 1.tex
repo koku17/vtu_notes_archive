@@ -217,81 +217,141 @@
 
 	\subsection{Laws of Logic}
 	Laws of logic are used to simplify the logical expressions. In these laws
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item T$_0$ is tautology
 		\item F$_0$ is contradiction
 	\end{enumerate}
 
 	\subsubsection{Law of Double Negation}
 	For any proposition $p$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $\neg(\neg p)\Leftrightarrow p$
 	\end{enumerate}
 
 	\subsubsection{Idempotent Law}
 	For any proposition $p$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor p\Leftrightarrow p$
 		\item $p\land p\Leftrightarrow p$
 	\end{enumerate}
 
 	\subsubsection{Identity Law}
 	For any proposition $p$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor \text{F}_0\Leftrightarrow p$
 		\item $p\land \text{T}_0\Leftrightarrow p$
 	\end{enumerate}
 
 	\subsubsection{Inverse Law}
 	For any proposition $p$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor\neg p\Leftrightarrow \text{T}_0$
 		\item $p\land\neg p\Leftrightarrow \text{F}_0$
 	\end{enumerate}
 
 	\subsubsection{Domination Law}
 	For any proposition $p$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor \text{T}_0\Leftrightarrow \text{T}_0$
 		\item $p\land \text{F}_0\Leftrightarrow \text{F}_0$
 	\end{enumerate}
 
 	\subsubsection{Commutative Law}
 	For any two propositions $p$ \& $q$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor q\Leftrightarrow q\lor p$
 		\item $p\land q\Leftrightarrow q\land p$
 	\end{enumerate}
 
 	\subsubsection{Absorption Law}
 	For any two propositions $p$ \& $q$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\land(p\lor q)\Leftrightarrow p$
 		\item $p\lor(p\land q)\Leftrightarrow p$
 	\end{enumerate}
 
 	\subsubsection{D\'{e} Morgan's Law}
 	For any two propositions $p$ \& $q$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $\neg(p\lor q)\Leftrightarrow\neg p\land\neg q$
 		\item $\neg(p\land q)\Leftrightarrow\neg p\lor\neg q$
 	\end{enumerate}
 
 	\subsubsection{Associative Law}
 	For any three propositions $p$, $q$ \& $r$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\land(q\land r)\Leftrightarrow (p\land q)\land r$
 		\item $p\lor(q\lor r)\Leftrightarrow (p\lor q)\lor r$
 	\end{enumerate}
 
 	\subsubsection{Distributive Law}
 	For any three propositions $p$, $q$ \& $r$
-	\begin{enumerate}[label=\roman*) ]
+	\begin{enumerate}[label=\roman*)]
 		\item $p\lor(q\land r)\Leftrightarrow (p\lor q)\land(p\lor r)$
 		\item $p\land(q\lor r)\Leftrightarrow (p\land q)\lor(p\land r)$
 	\end{enumerate}
 
+	\subsubsection{Laws of negation of a Conditional proposition}
+	\begin{enumerate}[label=\roman*)]
+		\item $\neg(p\to q)\Leftrightarrow p\land\neg q$
+		\item $p\to q\Leftrightarrow \neg p\lor q$
+	\end{enumerate}
+
+	\subsection{Duality}
+	\begin{itemize}[label=]
+		\item Suppose $u$ is a compound proposition that containes the connectives AND $(\land)$ or
+			OR $(\lor)$ and also T$_0$ \& F$_0$, then we replace
+			\begin{itemize}
+				\item $\land$ with $\lor$
+				\item $\lor$ with $\land$
+				\item T$_0$ with F$_0$
+				\item F$_0$ with T$_0$
+			\end{itemize}
+		\item The resulting compound proposition is called dual of $u$
+		\item If $u\Leftrightarrow v$ then, their duals $(u'\Leftrightarrow v')$ are logically
+			equivalent is called principle of duality
+	\end{itemize}
+
 	\section{Logical Implication $–$ Rules of Inference}
+	\subsection{Argument}
+	\begin{itemize}[label=]
+		\item Consider a set of propositons $p1,p2,p3,\cdots,pn$ and the proposition $q$ then a compound
+			proposition of the form $$p1\land p2\land p3\land \cdots \land pn$$
+		\item Where,
+			\begin{itemize}
+				\item $p1,p2,p3,\cdots,pn$ are called as \textbf{Premises} of the argument
+				\item $q$ is called \textbf{Conclusion} of the argument
+			\end{itemize}
+		\item The argument is valid, whenever each of the Premises $p1,p2,p3,\cdots,pn$ then Conclusion
+			$q$ is also true
+		\item	\hspace{-.75em}
+			\begin{tabular}{c}
+				Tabular form \\
+				\begin{tabular}{c}
+					$p1$ \\ $p2$ \\ $p3$ \\ $\vdots$ \\ $pn$ \\ \hline $\therefore q$
+				\end{tabular}
+			\end{tabular}
+	\end{itemize}
+
+	\subsection{Converse, Inverse and Contrapositive}
+	Consider conditional $p\to q$
+	\begin{enumerate}[label=\roman*)]
+		\item $q\to p$ is Converse of $p\to q$
+		\item $\neg p\to \neg q$ is Inverse of $p\to q$
+		\item $\neg q\to \neg p$ is Contrapositive of $p\to q$
+	\end{enumerate}
+
+	\subsection{Rules of Inference}
+	To test the validity of the given argument we use the following rules called Rules of Inference
+
+	\begin{enumerate}[label=\roman*)]
+		\item Rule of Conjunctive Simplification \\ $p\land q\Rightarrow p$
+		\item Rule of Disjunctive Amplification \\ $p\Rightarrow p\lor q$
+		\item Rule of Syllogism \\ $(p\to q)\land(q\to r)\Rightarrow p\to r$
+		\item Modus Pones \\ $p\land(p\to q)\Rightarrow q$
+		\item Modus Tollens \\ $(p\to q)\land\neg q\Rightarrow \neg q$
+		\item Rule of Disjunctive Syllogism \\ $(p\lor q)\land\neg p\Rightarrow q$
+	\end{enumerate}
 
 	\section{The Use of Quantifiers}
 	\section{Quantifiers}
