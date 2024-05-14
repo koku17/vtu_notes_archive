@@ -5,6 +5,8 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{pgffor}
+\usepackage{calc}
 
 % detailes
 \title{Module 1}
@@ -18,6 +20,13 @@
 	linkcolor=white
 }
 
+% macro
+\newcounter{linecount}
+\newcommand{\Newline}[1]{
+	\setcounter{linecount}{#1-1}
+	\foreach \i in {1,...,\value{linecount}}{\\ \null \\}
+}
+
 \begin{document}
 	\maketitle \thispagestyle{empty} \newpage
 	\tableofcontents \thispagestyle{empty} \newpage
@@ -27,9 +36,9 @@
 	\textbf{Database} \\
 	Collection of related data with an implicit meaning is a database \\
 	The DBMS is a general-purpose software system that facilitates the processes of defining, constructing,
-	manipulating, and sharing databases among various users \\ \null \\
+	manipulating, and sharing databases among various users \Newline{2}
 	\textbf{Data} \\
-	A data mean known facts that can be recorded and that have implicit meaning \\ \null \\
+	A data mean known facts that can be recorded and that have implicit meaning \Newline{2}
 	\textbf{Example}
 	\begin{itemize}[label=]
 		\item name list
@@ -44,8 +53,8 @@
 		\item A database is a logically coherent collection of data with some inherent meaning \\
 			A random assortment of data cannot correctly be referred to as a database
 		\item A database is designed, built, and populated with data for a specific purpose \\
-			It has an intended group of user sand some preconceived applications in which these users
-			are interested
+			It has an intended group of user sand some preconceived applications in which these
+			users are interested
 	\end{itemize}
 
 	\subsubsection{Other Properties of DBMS}
@@ -56,6 +65,7 @@
 			programs written specifically for that task or by a database management system
 		\item 
 	\end{itemize}
+
 	\subsection{Characteristics of database approach}
 	\subsection{Advantages of using the DBMS approach}
 	\subsection{History of database applications}
