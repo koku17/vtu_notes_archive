@@ -1,5 +1,5 @@
 doc:
-	@latexmk -pdf -auxdir=tmp -cd
+	@find . -name \*.tex -exec latexmk -pdf -auxdir=tmp -cd -shell-escape {} \; 1> /dev/null
 
 clean:
-	@rm -rf tmp/
+	@find . -name tmp -type d -exec rm -rf "{}" +
