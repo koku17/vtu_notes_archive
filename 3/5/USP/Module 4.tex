@@ -1,0 +1,53 @@
+\documentclass{article}
+
+% packages
+\usepackage{xcolor}
+\usepackage[margin=.5in]{geometry}
+\usepackage{hyperref}
+
+% detailes
+\author{koku17}
+\title{Module 4}
+
+% presets
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+
+% macros
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \tableofcontents \newpage
+    \pagenumbering{arabic}
+	\section{Process Control}
+	\subsection{Introduction}
+	\subsection{Process Identifiers}
+	\subsection{Functions for Process control}
+	\subsubsection{fork}
+	\subsubsection{vfork}
+	\subsubsection{exit}
+	\subsubsection{wait}
+	\subsubsection{waitpid}
+	\subsubsection{wait3}
+	\subsubsection{wait4}
+	\subsection{Race Conditions}
+	\subsection{exec Functions}
+	
+	\section{Overview of IPC Methods}
+	\subsection{Pipes}
+	\subsection{popen, pclose Functions}
+	\subsection{Coprocesses}
+	\subsection{FIFOs}
+	\subsection{System V}
+	\subsection{IPC}
+	\subsection{Message Queues}
+	\subsection{Semaphores}
+	
+	\section{Shared Memory}
+	\subsection{Client-Server Properties}
+	\subsection{Passing File Descriptors}
+	\subsection{An Open Server-Version 1}
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{article}
+
+% packages
+\usepackage{xcolor}
+\usepackage[margin=.5in]{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+% detailes
+\author{koku17}
+\title{Theory of Computation}
+
+% presets
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+\usetikzlibrary{
+	automata,
+	positioning,
+	arrows.meta
+}
+
+% macros
+\newcommand{\module}[1]{
+	\phantomsection
+	\begin{center}
+		\textbf{{\LARGE#1}}
+	\end{center}
+	\stepcounter{section}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \pdfbookmark[1]{Contents}{} \tableofcontents \newpage
+    \pagenumbering{arabic}
+
+	\module{Module 1}
+
+\end{document}

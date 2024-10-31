@@ -1,0 +1,93 @@
+\documentclass{article}
+
+% packages
+\usepackage{xcolor}
+\usepackage[margin=.5in]{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+% detailes
+\author{koku17}
+\title{Theory of Computation}
+
+% presets
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+\usetikzlibrary{
+	automata,
+	positioning,
+	arrows.meta
+}
+
+% macros
+\newcommand{\module}[1]{
+	\phantomsection
+	\begin{center}
+		\textbf{{\LARGE#1}}
+	\end{center}
+	\stepcounter{section}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \pdfbookmark[1]{Contents}{} \tableofcontents \newpage
+    \pagenumbering{arabic}
+
+	\module{Module 1}
+	\subsection{Introduction to Finite Automata}
+	Automata theory is also known as Theory of Computation.
+	Processing the input towards the output, every device has a low level calculating machine called as
+	Abstract Machine model.
+	These models we call as an Automata.
+	If automata models are implemented in finite number of states it is called as Finite Automata.
+
+	\subsubsection{Structural Representations}
+
+	\subsubsection{Automata and Complexity}
+	
+	\subsection{The Central Concepts of Automata Theory}
+	\subsubsection{Deterministic Finite Automata}
+	\subsubsection{Nondeterministic Finite Automata}
+	
+	\subsection{An Application}
+	\subsubsection{Text Search}
+	\subsubsection{Finite Automata with Epsilon-Transitions}
+	\newpage
+
+	\module{Module 2}
+	\subsection{Regular Expressions}
+	\subsubsection{Finite Automata and Regular Expressions}
+	\subsubsection{Proving Languages not to be Regular}
+	\subsubsection{Closure Properties of Regular Languages}
+	\subsubsection{Equivalence and Minimization of Automata}
+	\subsubsection{Applications of Regular Expressions}
+	\newpage
+
+	\module{Module 3}
+	\subsection{Context-Free Grammars}
+	\subsubsection{Parse Trees}
+	\subsubsection{Ambiguity in Grammars and Languages}
+	\subsubsection{Definition of the Pushdown Automaton}
+	\subsubsection{The Languages of a PDA}
+	\subsubsection{Equivalence of PDA's and CFG's}
+	\subsubsection{Deterministic Pushdown Automata}
+	\newpage
+
+	\module{Module 4}
+	\subsection{Normal Forms for Context-Free Grammars}
+	\subsubsection{The Pumping Lemma for Context-Free Languages}
+	\subsubsection{Closure Properties of Context-Free Languages}
+	\newpage
+
+	\module{Module 5}
+	\subsection{Introduction to Turing Machines}
+	\subsubsection{Problems That Computers Cannot Solve}
+	\subsubsection{The Turing Machine}
+	\subsubsection{Programming Techniques for Turing Machines}
+	\subsubsection{Extensions to the Basic Turing Machine}
+	\subsubsection{Undecidability $-$ A Language That Is Not Recursively Enumerable}
+\end{document}

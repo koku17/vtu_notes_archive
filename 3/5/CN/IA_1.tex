@@ -1,0 +1,62 @@
+\documentclass{article}
+
+% packages
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{enumitem}
+\usepackage[margin=.5in]{geometry}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{pgffor}
+
+% detailes
+\author{koku17}
+\title{Module 1}
+
+% presets
+\usetikzlibrary{
+	shapes.geometric,
+	arrows.meta
+}
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+
+% macros
+\newcommand{\answer}{\item [$\rightarrow$]}
+\newcommand{\rnode}{
+	node[draw=white,shape=rectangle,minimum height=2em,minimum width=7em]
+}
+\newcommand{\ctbox}[1]{
+	\begin{tabular}{c}
+		#1
+	\end{tabular}
+}
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \tableofcontents \newpage
+    \pagenumbering{arabic}
+
+	\begin{enumerate}
+		\item Explain OSI reference model.
+		\answer ~ \vspace{-1em}
+			\input{OSI.tikz}
+		\item Explain network and network criteria in communication \& the components of data communications
+			system.
+		\item Explain TCP/IP protocol suite \& the fundamental characteristics of data communication system.
+		\item Explain LAN \& WAN network types.
+		\item Explain Bus topology, Mesh topology \& data flow between two communication devices.
+		\item Compare between OSI and TCP/IP reference model.
+		\item Explain 7 layers of Open System Interconnection model.
+		\item Explain two types of packet switching in data communication network
+		\item Explain TCP/IP reference model \& the mention various types of data representation in data
+			communication system.
+		\item Explain guided and unguided transmission media.
+		\item Explain Ring topology, Star topology \& two types of switching network.
+		\item What is telecommunication ? Explain various modes of communication.
+	\end{enumerate}
+\end{document}

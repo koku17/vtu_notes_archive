@@ -1,0 +1,412 @@
+\documentclass{article}
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[none]{hyphenat}
+\usepackage{calc}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+% details
+\author{koku17}
+\title{Theory of Computation}
+
+% presets
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+\usetikzlibrary{
+	automata,
+	positioning,
+	arrows.meta
+}
+
+% macros
+\newcommand{\module}[1]{
+	\phantomsection
+	\begin{center}
+		\textbf{{\LARGE#1}}
+	\end{center}
+	\stepcounter{section}
+	\addcontentsline{toc}{section}{#1}
+}
+\newcommand{\que}[2]{
+	\item \phantomsection #1
+	\addcontentsline{toc}{subsubsection}{#2}
+}
+\newcommand{\ans}{
+	\item [$\longrightarrow$]
+}
+\newcommand{\indentpar}[2]{
+	\begin{itemize}[leftmargin=#1,label=]
+		\item #2
+	\end{itemize}
+}
+\newlength{\ansindent}
+\setlength{\ansindent}{\widthof{\phantom{$\longrightarrow$}}}
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \pdfbookmark[1]{Contents}{} \tableofcontents \newpage
+    \pagenumbering{arabic}
+
+	\tikzset{
+		node distance=5em,
+		every loop/.append style={
+			-Straight Barb
+		},
+		every initial by arrow/.style={
+			-Straight Barb
+		},
+		every edge/.append style={
+			-Straight Barb
+		},
+		initial text=,
+		double=black
+	}
+
+	\module{Module 1}
+	\subsection{Definite Finite State Machines}
+	\begin{enumerate}[label=\arabic*)]
+		\que{Draw a DFA to accept string of $a$'s having at least one $a$}{~Accept one or more $a$'s}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$a$'
+				\item Alphabets $$\sum=\{a\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/1.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/1.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l}
+							$\delta$ & $a$ \\ \hline
+							$q_0$ & $q_1$  \\
+							$q_1$ & $q_1$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/1.3.tikz}
+				\item Language $$\text{L}=\{a^n~|~n\ge1\}$$
+			\end{enumerate} \newpage
+
+		\que{Draw a DFA to accept strings of $a$'s and $b$'s having at least one `$a$'}{
+			Accept $a$'s and $b$'s with at least one $a$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$a$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/2.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/2.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$  \\ \hline
+							$q_0$ & $q_1$ & $q_0$ \\
+							$q_1$ & $q_1$ & $q_1$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/2.3.tikz}
+				\item Language $$\text{L}=\{a^n~|~n\ge1\}$$
+			\end{enumerate} \newpage
+
+		\que{Draw a DFA to accept strings of $a$'s and  $b$'s having exactly one $a$}{
+			Accept an $a$ and $b$'s with exactly one $a$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$a$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/3.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/3.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$  \\ \hline
+							$q_0$ & $q_1$ & $q_0$ \\
+							$q_1$ & $\varnothing$ & $q_1$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/3.3.tikz} $$\text{OR}$$ \input{Problems/DFA/3.x.tikz}
+				\item Language $$\text{L}=\{ab^n~|~n\ge0\}$$
+			\end{enumerate} \newpage
+
+		\que{Obtain a DFA to accept strings of $a$'s and $b$'s starting with the string $ab$}{
+			Accept $a$'s and $b$'s starting with $ab$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$ab$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/4.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/4.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$          \\ \hline
+							$q_0$ & $q_1$ & $\varnothing$ \\
+							$q_1$ & $\varnothing$ & $q_2$ \\
+							$q_2$ & $q_2$ & $q_2$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/4.3.tikz}
+				\item Language $$\text{L}=\{abw^n~|~w\in\{a,b\},n\ge0~\}$$
+			\end{enumerate} \newpage
+
+		\que{Draw DFA to accept strings of $a$'s and $b$'s ending with the string $abb$}{
+			Accept strings of $a$'s and $b$'s ending with $abb$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$abb$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/5.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/5.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$  \\ \hline
+							$q_0$ & $q_1$ & $q_0$ \\
+							$q_1$ & $q_1$ & $q_2$ \\
+							$q_2$ & $q_2$ & $q_3$ \\
+							$q_3$ & $q_1$ & $q_0$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/5.3.tikz}
+				\item Language $$\text{L}=\{w^nabb~|~w\in\{a,b\},n\ge0~\}$$
+			\end{enumerate} \newpage
+
+		\que{Draw DFA to accept strings of $a$'s and $b$'s not ending with the string $abb$}{
+			Accept strings of $a$'s and $b$'s not ending with $abb$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$abb$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA
+					\input{Problems/DFA/6.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/6.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$  \\ \hline
+							$q_0$ & $q_1$ & $q_0$ \\
+							$q_1$ & $q_1$ & $q_2$ \\
+							$q_2$ & $q_2$ & $q_3$ \\
+							$q_3$ & $q_1$ & $q_0$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/6.3.tikz}
+				\item Language $$\text{L}=\{w^nabb~|~w\in\{a,b\},n\ge0~\}$$
+			\end{enumerate} \newpage
+
+		\que{Draw a DFA to accept string of $a$'s \& $b$'s ending with $ab$ or $ba$}{
+			Accept string of $a$'s \& $b$'s ending with $ab$ or $ba$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum string is `$ab$' or `$ba$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton DFA 
+					\input{Problems/DFA/7.1.tikz}
+				\item Possible Transitions
+					\input{Problems/DFA/7.2.tikz}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{l|l|l}
+							$\delta$ & $a$ & $b$  \\ \hline
+							$q_0$ & $q_1$ & $q_3$ \\
+							$q_1$ & $q_1$ & $q_2$ \\
+							$q_2$ & $q_4$ & $q_3$ \\
+							$q_3$ & $q_4$ & $q_3$ \\
+							$q_4$ & $q_1$ & $q_2$
+						\end{tabular}
+					\end{table}
+				\item Final DFA \input{Problems/DFA/7.3.tikz}
+				\item Language $$\text{L}=\{w^n(ab+ba)~|~w\in\{a,b\},n\ge0~\}$$
+			\end{enumerate} \newpage
+
+	\que{
+		Draw a DFA to accept set of all strings on the alphabet $\displaystyle \sum=\{0,1\}$ that either
+		beings or ends or both with substring 01
+	}{
+		Accept string starting or ending with $01$
+	}
+	\ans
+		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+			\item Minimum string is `01'
+			\item Alphabets $$\sum=\{0,1\}$$
+			\item Skeleton DFA's 
+				\input{Problems/DFA/8.1.tikz}
+			\item Combining Transitions
+				\input{Problems/DFA/8.2.tikz}
+				\begin{table}[H]
+					\centering
+					\begin{tabular}{l|l|l}
+						$\delta$ & $a$ & $b$  \\ \hline
+						$q_0$ & $q_1$ & $q_3$ \\
+						$q_1$ & $q_4$ & $q_2$ \\
+						$q_2$ & $q_2$ & $q_2$ \\
+						$q_3$ & $q_4$ & $q_3$ \\
+						$q_4$ & $q_4$ & $q_5$ \\
+						$q_5$ & $q_4$ & $q_3$
+					\end{tabular}
+				\end{table}
+		\end{enumerate} \newpage
+
+	\que{Draw a DFA to accept the language $\text{L}=\{w:n_a(w)\ge1,n_b(w)=2\}$}{
+		Accept the language $\text{L}=\{w:n_a(w)\ge1,n_b(w)=2\}$
+	}
+	\ans String should have exactly two $b$'s and atleast one $a$'s
+		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+			\item Minimum String is $abb,bab,bba$
+			\item Skeleton DFA's 
+				\input{Problems/DFA/9.1.tikz}
+			\item Combining Transitions
+				\input{Problems/DFA/9.2.tikz}
+				\begin{table}[H]
+					\centering
+					\begin{tabular}{l|l|l}
+						$\delta$ & $a$ & $b$  \\ \hline
+						$q_0$ & $q_1$ & $q_4$ \\
+						$q_1$ & $\varnothing$ & $q_2$ \\
+						$q_2$ & $\varnothing$ & $q_3$ \\
+						$q_3$ & $q_3$ & $q_6$ \\
+						$q_4$ & $q_2$ & $q_5$ \\
+						$q_5$ & $q_3$ & $q_5$
+					\end{tabular}
+				\end{table}
+		\end{enumerate}
+	\end{enumerate} \newpage
+	\subsection{Divisible by $k$ problems}
+	\begin{enumerate}[label=\arabic*)]
+		\que{
+			Construct a DFA which accepts string of $0$'s and $1$'s where the value of each string is
+			represented as a binary number. Only the strings representing zero modulo 5 should be accepted
+		}{~Accept the string starting with $0$'s and $1$'s}
+		\ans
+		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+			\item Identify the radiax, input alphabets and the divisor
+				\begin{align*}
+					r&=2 \\
+					d&=\{0,1\} \\
+					k&=5
+				\end{align*}
+			\item Compute Possible remainders \\ $i=\{0,1,2,3,4\}$
+			\item Compute Transitions
+				\begin{table}[H]
+					\centering
+					\begin{tabular}{|c|c|c|c|} \hline
+						$i$ & $d$ & $j$ & $\delta(q_i,d)=q_j$ \\ \hline
+						\multirow{2}*{0} & 0 & 0 & $\delta(q_0,0)=q_0$ \\ \cline{2-4}
+							& 1 & 1 & $\delta(q_0,1)=q_1$ \\ \hline
+						\multirow{2}*{1} & 0 & 2 & $\delta(q_1,0)=q_2$ \\ \cline{2-4}
+							& 1 & 3 & $\delta(q_1,1)=q_3$ \\ \hline
+						\multirow{2}*{2} & 0 & 4 & $\delta(q_2,0)=q_4$ \\ \cline{2-4}
+							& 1 & 0 & $\delta(q_2,1)=q_0$ \\ \hline
+						\multirow{2}*{3} & 0 & 1 & $\delta(q_3,0)=q_1$ \\ \cline{2-4}
+							& 1 & 2 & $\delta(q_3,1)=q_2$ \\ \hline
+						\multirow{2}*{4} & 0 & 3 & $\delta(q_4,0)=q_3$ \\ \cline{2-4}
+							& 1 & 4 & $\delta(q_4,1)=q_4$ \\ \hline
+					\end{tabular}
+				\end{table}
+			\item Final DFA
+				\input{Problems/mod/1.tikz}
+		\end{enumerate} \newpage
+
+		\que{Draw a DFA to accept decimal strings divisible by 3}{
+			Accept decimal strings divisible by 3 by method of Counter DFA
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Identify the radiax, input alphabets and the divisor
+					\begin{align*}
+						r&=10 \\
+						d&=\{0,1,2,3,4,5,6,7,8,9\} \\
+						k&=3
+					\end{align*}
+				\item Compute Possible remainders \\ $i=\{0,1,2\}$
+				\item Compute Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{|c|c|c|c|} \hline
+								$i$ & $d$ & $j$ & $\delta(q_i,d)=q_j$ \\ \hline
+								\multirow{3}*{0} & 0 & 0 & $\delta(q_0,0)=q_0$ \\ \cline{2-4}
+									& 1 & 1 & $\delta(q_0,1)=q_1$ \\ \cline{2-4}
+									& 2 & 2 & $\delta(q_0,2)=q_2$ \\ \hline 
+								\multirow{3}*{1} & 0 & 1 & $\delta(q_1,0)=q_1$ \\ \cline{2-4}
+									& 1 & 2 & $\delta(q_1,1)=q_2$ \\ \cline{2-4}
+									& 2 & 0 & $\delta(q_1,2)=q_0$ \\ \hline 
+								\multirow{3}*{2} & 0 & 2 & $\delta(q_2,0)=q_2$ \\ \cline{2-4}
+									& 1 & 0 & $\delta(q_2,1)=q_0$ \\ \cline{2-4}
+									& 2 & 1 & $\delta(q_2,2)=q_1$ \\ \hline 
+								\multirow{3}*{3} & 0 & 0 & $\delta(q_3,0)=q_0$ \\ \cline{2-4}
+									& 1 & 1 & $\delta(q_3,1)=q_1$ \\ \cline{2-4}
+									& 2 & 2 & $\delta(q_3,2)=q_2$ \\ \hline
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0\{0,3,6,9\})$ & $=$ & $q_0$ \\
+								$\delta(q_0\{1,4,7\})$ & $=$ & $q_1$ \\
+								$\delta(q_0\{2,5,8\})$ & $=$ & $q_2$ \\
+								$\delta(q_1\{0,3,6,9\})$ & $=$ & $q_1$ \\
+								$\delta(q_1\{1,4,7\})$ & $=$ & $q_2$ \\
+								$\delta(q_1\{2,5,8\})$ & $=$ & $q_0$ \\
+								$\delta(q_2\{0,3,6,9\})$ & $=$ & $q_2$ \\
+								$\delta(q_2\{1,4,7\})$ & $=$ & $q_0$ \\
+								$\delta(q_2\{2,5,8\})$ & $=$ & $q_1$ \\
+							\end{tabular} \\ ~\vspace{-.5em} \\
+							Transitions & Counter DFA
+						\end{tabular}
+					\end{table}
+				\item Final DFA
+					\input{Problems/mod/2.tikz}
+			\end{enumerate} \newpage
+		\que{Obtain DFA to accept strings of even number of $a$'s}{~Accept even number of $a$'s}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Identify the number of states
+				\indentpar{1.5em}{Since Even numbers can be 0 and multiple of 2, there would be two states.}
+				\item Identify first and final states
+					\begin{itemize}[leftmargin=2.5em]
+						\item When the number of $a$'s is odd and next $a$ goes to even state
+						\item When the number of $a$'s is even and next $a$ goes to odd state 
+					\end{itemize}
+				\item Design \input{Problems/mod/3.tikz}
+			\end{enumerate}
+		\que{
+			Obtain a DFA to accept the language $\text{L}=\{w:|w|\mod3=0\}$ where $\displaystyle \sum=\{a\}$
+		}{
+			Accept the language $\text{L}=\{w:|w|\mod3=0\}$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Identify the number of states
+					\begin{enumerate}[label=case \arabic* :]
+						\item Remainder 0, the state is $q_0$
+						\item Remainder 1, the state is $q_1$
+						\item Remainder 2, the state is $q_2$
+					\end{enumerate}
+				\item Identify the start and final state
+					\begin{itemize}
+						\item In case of zero inputs, number of $a$'s will be zero
+					\end{itemize}
+			\end{enumerate}
+	\end{enumerate}
+\end{document}

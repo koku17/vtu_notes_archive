@@ -1,0 +1,52 @@
+\documentclass{article}
+
+% packages
+\usepackage{xcolor}
+\usepackage[margin=.5in]{geometry}
+\usepackage{hyperref}
+
+% detailes
+\author{koku17}
+\title{Module 5}
+
+% presets
+\hypersetup{
+    hidelinks
+}
+\pagecolor{black}
+\color{white}
+
+% macros
+
+\begin{document}
+    \pagenumbering{gobble} \maketitle \newpage
+    \pagenumbering{roman} \tableofcontents \newpage
+    \pagenumbering{arabic}
+
+	\section{Signals and Daemon Processes}
+	\subsection{Introduction}
+	\subsection{Signal Concepts}
+	\subsection{Signal Functions}
+	\subsection{SIGCLD Semantics}
+	\subsection{Kill and Raise functions}
+	\subsection{Alarm and Pause Functions}
+	\subsection{Signal Sets}
+	\subsection{sigprocmask Function}
+	\subsection{sigpending function}
+	\subsection{sigaction function}
+	\subsection{sigsetjmp and siglongjmp functions}
+	\subsection{sigsuspend function}
+	\subsection{abort function}
+	\subsection{system function}
+	\subsection{sleep, nanosleep and clock\_nanosleep functions}
+	\subsection{sigqueue functions}
+	\subsection{job-control signals}
+	\subsection{signal names and numbers}
+	
+	\section{Daemon Processes}
+	\subsection{Introduction}
+	\subsection{Daemon Characteristics}
+	\subsection{Coding Rules}
+	\subsection{Error Logging}
+	\subsection{Client-Server Model}
+\end{document}

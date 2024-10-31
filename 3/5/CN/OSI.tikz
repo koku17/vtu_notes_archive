@@ -1,0 +1,61 @@
+\begin{figure}[H]
+	\def \osilayer{Physical, Data Link, Network, Transport, Session, Presentation, Application}
+	\def \osiunit{Bit, Frame, Packet, TPDU, SPDU, PPDU, APDU}
+	\def \osiprot{Transport, Session, Presentation, Application}
+	\centering
+	\begin{tikzpicture}[node distance = .8in]
+		\draw
+			\foreach[count = \j, evaluate = \j as \l using int(\j - 1)] \i in \osilayer{
+				\if \l 0
+					\rnode (\j) {\i}
+				\else
+					\rnode [above of = \l] (\j) {\i}
+				\fi
+			}
+
+			\foreach \i in {1, ..., 7}{
+				node[left of = \i] {\i}
+			}
+
+			\rnode[right of = 1, xshift = 5em]  (16) {Physical}
+			\rnode[right of = 16, xshift = 5em] (17) {Physical}
+			\rnode[above of = 16]               (18) {Data Link}
+			\rnode[above of = 17]               (19) {Data Link}
+			\rnode[above of = 18]               (20) {Network}
+			\rnode[above of = 19]               (21) {Network}
+
+			\foreach[count = \j, evaluate = \j as \l using int(\j + 7)] \i in \osilayer{
+				\if\j1
+					\rnode[right of = 17, xshift = 5em] (\l) {\i}
+				\else
+					\rnode [above of = \the \numexpr \l - 1 \relax] (\l) {\i}
+				\fi
+			}
+
+			\foreach[count = \j, evaluate = \j as \l using int(\j + 7)] \i in \osiunit{
+				node[right of = \l, xshift = -1em, anchor = west] {\i}
+			}
+		;
+
+		\foreach[count = \j, evaluate = \j as \l using int(\j + 3)] \i in \osiprot{
+			\draw[dashed, latex-latex] (\l) -- node[above] {\i~protocol} (\the \numexpr \l + 7 \relax);
+		}
+
+		\foreach \i in {1, 2, ..., 5, 6, 8, 9, ..., 13}{
+				\draw[latex-latex] (\i) -- (\the \numexpr \i + 1 \relax);
+		}
+
+		\foreach[count = \j] \i in {16, 18, 20, 17, 19, 21}{
+			\ifodd \i
+				\draw[dashed, latex-latex] (\i) -- (\the \numexpr \j + 4 \relax);
+			\else
+				\draw[dashed, latex-latex] (\i) -- (\j);
+				\draw[dashed, latex-latex] (\i) -- (\the \numexpr \i + 1 \relax);
+			\fi
+		}
+		\draw
+			node[above left of=7]   {Layers}
+			node[above right of=14] {\ctbox{Name of \\ unit changed}}
+		;
+	\end{tikzpicture}
+\end{figure}

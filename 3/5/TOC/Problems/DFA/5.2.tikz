@@ -1,0 +1,26 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=1in]
+		\draw
+			node (0) {$b$}
+				child {node {$q0$}}
+				child {node {$q0$}}
+
+			node[right of=0] (0) {$a$}
+				child {node {$q1$}}
+				child {node {$q1$}}
+
+			node[right of=0] (0) {$a$}
+				child {node {$q2$}}
+				child {node {$q1$}}
+
+			node[right of=0] (0) {$a$}
+				child {node {$q3$}}
+				child {node {$q1$}}
+
+			node[right of=0] (0) {$b$}
+				child {node {$q3$}}
+				child {node {$q0$}}
+		;
+	\end{tikzpicture}
+\end{figure}
