@@ -1,6 +1,4 @@
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
+\begin{tikzpicture}
 	\draw
 		node [state,initial]               (q0) {$q_0$}
 		node [state,accepting,right of=q0] (q1) {$q_1$}
@@ -8,5 +6,4 @@
 		(q0) edge[above] node{$a$}         (q1)
 		(q1) edge[loop above] node{$b$}    (q1)
 	;
-	\end{tikzpicture}
-\end{figure}
+\end{tikzpicture}

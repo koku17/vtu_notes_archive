@@ -2,8 +2,8 @@
     \centering
     \begin{tikzpicture}
 		\draw
-			node [state,accepting] (q0) {E}
-			node [state,right of=q0] (q1) {O}
+			node [state,accepting,initial] (q0) {E}
+			node [state,right of=q0]       (q1) {O}
 
 			(q0) edge [above,bend left] node{$a$} (q1)
 			(q1) edge [below,bend left] node{$a$} (q0)

@@ -138,7 +138,15 @@
 							$q_1$ & $\varnothing$ & $q_1$
 						\end{tabular}
 					\end{table}
-				\item Final DFA \input{Problems/DFA/3.3.tikz} $$\text{OR}$$ \input{Problems/DFA/3.x.tikz}
+				\item Final DFA
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{c}
+							\input{Problems/DFA/3.3.tikz} \\
+							OR \\
+							\input{Problems/DFA/3.x.tikz}
+						\end{tabular}
+					\end{table}
 				\item Language $$\text{L}=\{ab^n~|~n\ge0\}$$
 			\end{enumerate} \newpage
 
@@ -163,7 +171,7 @@
 						\end{tabular}
 					\end{table}
 				\item Final DFA \input{Problems/DFA/4.3.tikz}
-				\item Language $$\text{L}=\{abw^n~|~w\in\{a,b\},n\ge0~\}$$
+				\item Language $$\text{L}=\{ab\text{W}^n~|~\text{W}\in\{a,b\},n\ge0~\}$$
 			\end{enumerate} \newpage
 
 		\que{Draw DFA to accept strings of $a$'s and $b$'s ending with the string $abb$}{
@@ -188,7 +196,7 @@
 						\end{tabular}
 					\end{table}
 				\item Final DFA \input{Problems/DFA/5.3.tikz}
-				\item Language $$\text{L}=\{w^nabb~|~w\in\{a,b\},n\ge0~\}$$
+				\item Language $$\text{L}=\{\text{W}^nabb~|~\text{W}\in\{a,b\},n\ge0~\}$$
 			\end{enumerate} \newpage
 
 		\que{Draw DFA to accept strings of $a$'s and $b$'s not ending with the string $abb$}{
@@ -213,7 +221,7 @@
 						\end{tabular}
 					\end{table}
 				\item Final DFA \input{Problems/DFA/6.3.tikz}
-				\item Language $$\text{L}=\{w^nabb~|~w\in\{a,b\},n\ge0~\}$$
+				\item Language $$\text{L}=\{\text{W}^nabb~|~\text{W}\in\{a,b\},n\ge0~\}$$
 			\end{enumerate} \newpage
 
 		\que{Draw a DFA to accept string of $a$'s \& $b$'s ending with $ab$ or $ba$}{
@@ -239,7 +247,7 @@
 						\end{tabular}
 					\end{table}
 				\item Final DFA \input{Problems/DFA/7.3.tikz}
-				\item Language $$\text{L}=\{w^n(ab+ba)~|~w\in\{a,b\},n\ge0~\}$$
+				\item Language $$\text{L}=\{\text{W}^n(ab+ba)~|~\text{W}\in\{a,b\},n\ge0~\}$$
 			\end{enumerate} \newpage
 
 	\que{
@@ -270,8 +278,8 @@
 				\end{table}
 		\end{enumerate} \newpage
 
-	\que{Draw a DFA to accept the language $\text{L}=\{w:n_a(w)\ge1,n_b(w)=2\}$}{
-		Accept the language $\text{L}=\{w:n_a(w)\ge1,n_b(w)=2\}$
+	\que{Draw a DFA to accept the language $\text{L}=\{\text{W}:n_a(\text{W})\ge1,n_b(\text{W})=2\}$}{
+		Accept the language $\text{L}=\{\text{W}:n_a(\text{W})\ge1,n_b(\text{W})=2\}$
 	}
 	\ans String should have exactly two $b$'s and atleast one $a$'s
 		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
@@ -378,6 +386,7 @@
 				\item Final DFA
 					\input{Problems/mod/2.tikz}
 			\end{enumerate} \newpage
+
 		\que{Obtain DFA to accept strings of even number of $a$'s}{~Accept even number of $a$'s}
 		\ans
 			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
@@ -388,25 +397,198 @@
 						\item When the number of $a$'s is odd and next $a$ goes to even state
 						\item When the number of $a$'s is even and next $a$ goes to odd state 
 					\end{itemize}
-				\item Design \input{Problems/mod/3.tikz}
+				\item Compute Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c}
+								$\delta$ & $a$ \\ \hline
+								E & O \\
+								O & E
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(\text{O},a)$ & $=$ & E \\
+								$\delta(\text{E},a)$ & $=$ & O
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final Design \input{Problems/mod/3.tikz}
 			\end{enumerate}
+
 		\que{
-			Obtain a DFA to accept the language $\text{L}=\{w:|w|\mod3=0\}$ where $\displaystyle \sum=\{a\}$
-		}{
-			Accept the language $\text{L}=\{w:|w|\mod3=0\}$
-		}
+			Obtain a DFA to accept the language $\text{L}=\{\text{W}:|\text{W}|\mod3=0\}$ where
+			$\displaystyle \sum=\{a\}$
+		}{~Accept the language $\text{L}=\{\text{W}:|\text{W}|\mod3=0\}$}
 		\ans
 			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
 				\item Identify the number of states
-					\begin{enumerate}[label=case \arabic* :]
+					\begin{itemize}[label=]
 						\item Remainder 0, the state is $q_0$
 						\item Remainder 1, the state is $q_1$
 						\item Remainder 2, the state is $q_2$
-					\end{enumerate}
-				\item Identify the start and final state
-					\begin{itemize}
-						\item In case of zero inputs, number of $a$'s will be zero
 					\end{itemize}
+				\item Identify the start and final state
+					\begin{itemize}[leftmargin=2.5em]
+						\item In case of no input, the state is accepted
+						\item In case of three or multiple for three input the state is accepted
+					\end{itemize}
+				\item Compute Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c}
+								$\delta$ & $a$ \\ \hline
+								$q_0$ & $q_1$ \\
+								$q_1$ & $q_2$ \\
+								$q_2$ & $q_1$
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0,a)$ & $=$ & $q_1$ \\
+								$\delta(q_1,a)$ & $=$ & $q_2$ \\
+								$\delta(q_2,a)$ & $=$ & $q_0$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final Design \input{Problems/mod/4.tikz}
+			\end{enumerate} \newpage
+
+		\que{
+			Transition of DFA which has strings of W with $|\text{W}| \mod 3$ and $|\text{W}| \mod 2$ can be
+			obtained by taking the cross product of $\text{Q}_1$ \& $\text{Q}_2$ (Cartesian Product)
+		}{~Find DFA with $\text{Q}=\{|\text{W}| : \text{W} \mod 3\} \times \{|\text{W}| : \text{W} \mod 2\}$}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Find Cartesian Product and identify states
+					\begin{itemize}[label=]
+						\item $\text{Q}_1=\{0,1,2\}$
+						\item $\text{Q}_2=\{0,1\}$
+						\item $\text{Q}_1 \times \text{Q}_2=\{(0,0),(0,1),(1,0),(1,1),(2,0),(2,1)\}$ \\
+						\item For 5 states we have, $q_i \equiv (i \mod 3,i \mod 2)$
+							\begin{itemize}[label=]
+								\item $q_0 \equiv (0,0)$
+								\item $q_1 \equiv (1,1)$
+								\item $q_2 \equiv (2,0)$
+								\item $q_3 \equiv (0,1)$
+								\item $q_4 \equiv (1,0)$
+								\item $q_5 \equiv (2,1)$
+							\end{itemize}
+					\end{itemize}
+				\item Compute Transitions
+				\begin{table}[H]
+					\centering
+					\begin{tabular}{cc}
+						\begin{tabular}{c|c}
+							$\delta$ & $a$ \\ \hline
+							$q_0$ & $q_1$ \\
+							$q_1$ & $q_2$ \\
+							$q_2$ & $q_3$ \\
+							$q_3$ & $q_4$ \\
+							$q_4$ & $q_5$ \\
+							$q_5$ & $q_0$
+						\end{tabular} &
+						\begin{tabular}{lll}
+							$\delta(q_1,a)$ & $=$ & $q_2$ \\
+							$\delta(q_2,a)$ & $=$ & $q_3$ \\
+							$\delta(q_3,a)$ & $=$ & $q_4$ \\
+							$\delta(q_4,a)$ & $=$ & $q_5$ \\
+							$\delta(q_5,a)$ & $=$ & $q_0$
+						\end{tabular}
+					\end{tabular}
+				\end{table}
+				\item Final Design
+					\begin{itemize}[leftmargin=2.5em]
+						\item When $\text{W} \mod 3=\text{W} \mod 2$ \input{Problems/mod/5.1.tikz}
+						\item When $\text{W} \mod 3\ne\text{W} \mod 2$ \input{Problems/mod/5.2.tikz}
+						\item When $\text{W} \mod 3>\text{W} \mod 2$ \input{Problems/mod/5.3.tikz}
+					\end{itemize}
+			\end{enumerate} \newpage
+
+		\que{
+			Obtain a DFA to accept language $\text{L}=\{\text{W} : |\text{W}| \mod 5 \ne 0\}$ on
+			$\displaystyle\sum = \{a\}$
+		}{~Accept language $\text{L}=\{\text{W} : |\text{W}| \mod 5 \ne 0\}$ on $\sum = \{a\}$}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Identify states
+				\item Identify the number of states
+					\begin{itemize}[label=]
+						\item Remainder 0, the state is $q_0$
+						\item Remainder 1, the state is $q_1$
+						\item Remainder 2, the state is $q_2$
+						\item Remainder 3, the state is $q_3$
+						\item Remainder 4, the state is $q_4$
+					\end{itemize}
+				\item Identify the start and final state
+					\begin{itemize}[leftmargin=2.5em]
+						\item In case of no input, the state is accepted
+						\item In case of five or multiple of five input the state is accepted
+					\end{itemize}
+				\item Compute Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{l|l}
+								$\delta$ & $a$ \\ \hline
+								$q_0$ & $q_1$ \\
+								$q_1$ & $q_2$ \\
+								$q_2$ & $q_3$ \\
+								$q_4$ & $q_0$ \\
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0,a)$ & $=$ & $q_1$ \\
+								$\delta(q_1,a)$ & $=$ & $q_2$ \\
+								$\delta(q_2,a)$ & $=$ & $q_3$ \\
+								$\delta(q_3,a)$ & $=$ & $q_4$ \\
+								$\delta(q_4,a)$ & $=$ & $q_0$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final Design \input{Problems/mod/6.tikz}
+			\end{enumerate} \newpage
+
+		\que{Obtain a DFA to accept strings of $a$'s and $b$'s having even number of $a$'s and $b$'s}{
+			Accept strings of $a$'s and $b$'s with even number of $a$'s and $b$'s
+		}
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Identify the number of states
+				\indentpar{1.5em}{
+					Since Even numbers can be 0 and multiple of 2 for 2 letters, there are 4 different states :
+					\begin{itemize}[leftmargin=1.5em]
+						\item Both $a$'s and $b$'s are even i.e $\text{E}_a\text{E}_b$
+						\item Even $a$'s and odd $b$'s i.e $\text{E}_a\text{O}_b$
+						\item Odd $a$'s and even $b$'s i.e $\text{O}_a\text{E}_b$
+						\item Both $a$'s and $b$'s are odd i.e $\text{O}_a\text{O}_b$
+					\end{itemize}
+				}
+				\item Identify the start and final state
+					\begin{itemize}[leftmargin=2.5em]
+						\item In case of 0 or multiple of 2 input the state is accepted.
+						\item All the rest of the cases are rejected.
+					\end{itemize}
+				\item Complete Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$ & $a$ & $b$ \\ \hline
+								$\text{E}_a\text{E}_b$ & $\text{O}_a\text{E}_b$ & $\text{E}_a\text{O}_b$ \\
+								$\text{O}_a\text{E}_b$ & $\text{E}_a\text{E}_b$ & $\text{O}_a\text{O}_b$ \\
+								$\text{E}_a\text{O}_b$ & $\text{O}_a\text{O}_b$ & $\text{E}_a\text{E}_b$ \\
+								$\text{O}_a\text{O}_b$ & $\text{E}_a\text{O}_b$ & $\text{O}_a\text{E}_b$
+							\end{tabular}
+							\begin{tabular}{lll}
+								$\delta(\text{E}_a\text{E}_b,a)$ & $=$ & $\text{O}_a\text{E}_b$ \\
+								$\delta(\text{E}_a\text{E}_b,b)$ & $=$ & $\text{E}_a\text{O}_b$ \\
+								$\delta(\text{O}_a\text{E}_b,a)$ & $=$ & $\text{E}_a\text{E}_b$ \\
+								$\delta(\text{O}_a\text{E}_b,b)$ & $=$ & $\text{O}_a\text{O}_b$ \\
+								$\delta(\text{E}_a\text{O}_b,a)$ & $=$ & $\text{O}_a\text{E}_b$ \\
+								$\delta(\text{E}_a\text{O}_b,b)$ & $=$ & $\text{E}_a\text{E}_b$ \\
+								$\delta(\text{O}_a\text{O}_b,b)$ & $=$ & $\text{E}_a\text{O}_b$ \\
+								$\delta(\text{O}_a\text{O}_b,b)$ & $=$ & $\text{O}_a\text{E}_b$ \\
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final Design \input{Problems/mod/7.tikz}
 			\end{enumerate}
 	\end{enumerate}
 \end{document}
