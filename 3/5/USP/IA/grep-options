@@ -1,0 +1,10 @@
+Option      Significance
+-i          Ignores case for matching.
+-v          Doesn't display lines matching expression
+-n          Displays line numbers along with lines
+-c          Displays count of number of occurrences
+-l          Displays list of filenames only.
+-e exp      Matches multiple patterns
+-f filename Takes patterns from file, one per line
+-E          Treats patterns as an Extended Regular Expression
+-F          Matches multiple fixed strings

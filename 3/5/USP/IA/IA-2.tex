@@ -1,0 +1,254 @@
+\documentclass{article}
+
+%! TEX program=xelatex
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[outputdir=tmp,cache=false]{minted}
+\usepackage{hyperref}
+\usepackage{pgffor}
+
+% detailes
+\author{koku17}
+\title{IA-2 Important QA}
+
+% presets
+\hypersetup{
+	hidelinks
+}
+\setminted{	
+	obeytabs=true,
+	tabsize=4
+}
+
+% ricing
+\def \darkmode{1}
+
+\if\darkmode1
+	\pagecolor{black}
+	\color{white}
+	\usemintedstyle{one-dark}
+\else
+	\usemintedstyle{perldoc}
+\fi
+
+% macro
+\newcommand{\module}[1]{
+	\begin{center}
+		\phantomsection \Large Module #1
+	\end{center}
+	\addcontentsline{toc}{section}{Module #1}
+}
+
+\newcommand{\question}[2]{
+	{\phantomsection \item #1}
+	\ifx #2
+		\addcontentsline{toc}{subsection}{~#1}
+	\else
+		\addcontentsline{toc}{subsection}{#2}
+	\fi
+}
+
+\def \answer {\item[$\rightarrow$]}
+
+\def \output {
+	\begin{center}
+		\phantomsection \textbf{Output}
+		\addcontentsline{toc}{subsubsection}{Output}
+	\end{center}
+}
+
+\begin{document}
+	\pagenumbering{gobble} \maketitle \newpage
+	\pagenumbering{roman} \pdfbookmark[1]{Contents}{} \tableofcontents \newpage
+	\pagenumbering{arabic}
+
+	\module{2}
+	\begin{enumerate}[label=\arabic*)]
+		\question{
+			Write a program to read pattern \& filename from the user and search the pattern in the given file
+		}{~Search the pattern in the given file by user}
+		\answer \inputminted{sh}{matchpat.sh}
+		\output \verb|$ sh matchpat.sh| \inputminted{text}{1.out} \newpage
+		
+		\question{Explain all the looping statements with syntax}{ }
+		\answer Looping statements are :
+			\begin{enumerate}[label=\roman*)]
+				\item \mint{bash}{for}
+					\begin{itemize}
+						\item The \mintinline{bash}{for} loop operates on lists of items.
+						\item It repeats a set of commands for every item in a list.
+						\item \textbf{Syntax} \inputminted{bash}{for_syntax.sh}
+						\item \textbf{Example} \inputminted{bash}{for_example.sh}
+						\item \textbf{Output} \\ \texttt{\foreach \i in {1,...,5} {\i~}}
+					\end{itemize}
+				\item \mint{bash}{while}
+					\begin{itemize}
+						\item A \mintinline{bash}{while} loop uses a test condition to determine whether or not
+							to execute it's command block.
+						\item If condition returns true when tested, the loops executes commands or if it
+							returns false, the script skips the loop and proceeds beyond its terminate point
+						\item Because the loop starts with the test, if the condition fails, then the program
+							continues at whatever action immediately follows the loops done statement
+						\item If the condition passes then the script executes the enclosed command block
+						\item After performing the last command in the block, the loop starts tests the
+							condition again \& determine whether to proceed beyond the loop or fail through it
+							once more
+						\item \textbf{Syntax} \inputminted{bash}{while_syntax.sh}
+						\item \textbf{Example} \inputminted{bash}{while_example.sh}
+						\item \textbf{Output} \\ \texttt{\foreach \i in {1,...,5} {\i~}}
+					\end{itemize} \newpage
+				\item \mint{bash}{until}
+					\begin{itemize}
+						\item The condition is evaluated at the start of each iteration.
+						\item If the condition is false, the block of statements inside the loop is executed.
+						\item After executing the block, the loop returns to check the condition again.
+						\item The loop continues until the condition becomes true.
+						\item Once the condition is true, the control moves to the next command after the loop.
+						\item \textbf{Syntax} \inputminted{bash}{until_syntax.sh}
+						\item \textbf{Example} \inputminted{bash}{until_example.sh}
+						\item \textbf{Output} \\ \texttt{\foreach \i in {5,...,1} {\i~}}
+					\end{itemize}
+			\end{enumerate} \newpage
+
+		\question{
+			Write a shell script to read multi-file patterns from command line and search these patterns in a
+			given file which is also read from command line
+		}{~Write a shell script to read multiple patterns from a given file by command line arguments}
+		\answer
+			\inputminted{bash}{multi-pattern.bash}
+		\output \verb|$ bash multi-pattern.bash author doc IA-2.tex| \inputminted{text}{3.out} \newpage
+
+		\question{
+			Define Shell Script, write a menu-driven shell script which display the following
+		}{~Define Shell Script, write a menu-driven shell script which displays the information}
+			\begin{enumerate}[label=\roman*)]
+				\item Current User
+				\item List of files
+				\item Today's date
+				\item Process status
+				\item Contents of file
+			\end{enumerate}
+		\answer \textbf{Shell Script} \\
+			When a shell is executing non-interactively, the commands executed are read from file. This method
+			of using files for execution instead of manual typing by keyboard interactively in a shell is known
+			as shell scripting and the file is known as shell script
+		\inputminted{bash}{menu.sh} \newpage
+		\output \verb|$ sh menu.sh| \inputminted{text}{4.out} \newpage
+
+		\question{Define a Shell. Briefly explain the shell interpretation cycle}{ }
+		\answer \textbf{Shell}
+			\begin{itemize}
+				\item A shell is a program that acts as the interface between user \& the system, allowing user
+					to enter commands for the operating system to execute.
+				\item Shell is both a command interpreter and a programming.
+				\item As a command interpreter, the shell provides the user interface to the set of utilities.
+				\item The programming language features allow these utilities to be combined.
+				\item Files containing commands can be created and become commands themselves.
+				\item These new commands have the same status as system commands in directories such as /bin,
+					allowing users or groups to establish custom environments to automate their commands tasks.
+			\end{itemize}
+
+			\textbf{Shell interpretation cycle}
+			\begin{itemize}
+				\item Shells may be used interactively or non-interactively, in interactive mode, they accept
+					input typed from the keyboard.
+				\item When executing non-interactively, shells execute commands read from a file.
+				\item A shell allows execution of commands both synchronously \& asynchronously.
+				\item The shell waits for synchronous commands to complete before accepting more input,
+					asynchronously commands continue to execute in parallel with the shell while it reads \&
+					executes additional commands.
+			\end{itemize} \newpage
+
+		\question{Explain logical operators and conditional operators in Shell script}{ }
+		\answer \textbf{The Logical Operators}
+			\begin{itemize}
+				\item When you evaluate expressions we need a \mintinline{bash}{test} statement because the true
+					or false values returned by expressions can't be directly handled by \mintinline{bash}{if}
+				\item Shell provides two operators that allow conditional execution -- \mintinline{bash}{&&} and
+					\mintinline{bash}{||}
+				\item \textbf{Example} \inputminted{bash}{logical_example}
+			\end{itemize}
+
+			\textbf{Conditional operators}
+			\begin{itemize}[label=]
+				\item \textbf{\mintinline{bash}{if}-conditional}
+					\begin{itemize}
+						\item The if statement makes two-way decisions depending on the fulfillment of a certain
+							condition shown as below \inputminted{bash}{conditional_if}
+						\item \textbf{Example} \inputminted{bash}{if_examples}
+					\end{itemize} \newpage
+				\item \textbf{\mintinline{bash}{case}-conditional}
+					\begin{itemize}
+						\item Case conditional is a special case of \mintinline{bash}{if}\verb|-else| ladder
+						\item It accepts multiple patterns such as regular expressions
+						\item If the variable value matches then it executes the command block
+						\item Each command block ends with \mintinline{bash}{;;}, after reaching command block
+							shell terminates in the end denoted by \mintinline{bash}{esac}
+						\item \textbf{Syntax} \inputminted{bash}{conditional_case}
+						\item \textbf{Example} \inputminted{bash}{conditional_examples}
+					\end{itemize}
+			\end{itemize} \newpage
+
+		\question{Write a shell script to compare two numbers and print the result}{ }
+		\answer \inputminted{bash}{cmp.sh}
+		\output
+			\begin{enumerate}[label=\arabic*)]
+				\item \verb|$ sh cmp.sh 1 2| \inputminted{text}{8.1.out}
+				\item \verb|$ sh cmp.sh 2 2| \inputminted{text}{8.2.out}
+			\end{enumerate} \newpage
+
+		\question{Explain the \mintinline{bash}{grep} command with all it's options}{ }
+		\answer \textbf{Options} \inputminted{text}{grep-options}
+			\textbf{Examples} \inputminted{bash}{grep-examples} \newpage
+
+		\question{Explain 3 Standard files with respect to Unix OS}{ }
+		\answer
+			\begin{itemize}
+				\item \textbf{Standard input} \\
+					This file stream representing input, connected to the keyboard. \\
+					The standard input can represent three input sources :
+					\begin{itemize}
+						\item The keyboard, the default source.
+						\item A file using redirection with the \mintinline{bash}{<} symbol.
+						\item Another program using a pipeline \mintinline{bash}{|} symbol.
+					\end{itemize}
+				\item \textbf{Standard output} \\
+					This file stream representing output, connected to the display. \\
+					The standard output can represent three possible destinations : 
+					\begin{itemize}
+						\item The terminal, the default destination.
+						\item A file using the redirection symbols \mintinline{bash}{>} and
+							\mintinline{bash}{>>}.
+						\item As input to another program using a pipeline.
+					\end{itemize}
+				\item \textbf{Standard error} \\
+					This file stream representing error messages that emanate from the command or shell,
+					connected to the display.
+				\item A file is opened by referring to its pathname, but subsequent read and write operations
+						identify the file by a unique number called a file descriptor
+				\item The kernel maintains a table of file descriptors for every process running in the system
+				\item The first three slots are generally allocated to the three standard streams as,
+					\begin{enumerate}[label=\arabic* -,start=0]
+						\item Standard input
+						\item Standard output
+						\item Standard error
+					\end{enumerate}
+			\end{itemize}
+	\end{enumerate} \newpage
+
+	\module{3}
+	\begin{enumerate}[label=\arabic*)]
+		\question{Write C-POSIX complaint program to check the following values}{ }
+			\begin{enumerate}[label=\roman*)]
+				\item Number of clock ticks
+				\item Maximum path length
+				\item Maximum number of child processes
+				\item Number of open files or process
+			\end{enumerate}
+		\answer \inputminted{c}{posix_max.c}
+		\output \inputminted{text}{max.out}
+	\end{enumerate}
+\end{document}

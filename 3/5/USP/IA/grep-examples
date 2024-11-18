@@ -1,0 +1,9 @@
+grep -i 'case' file              # match all CASE case CAsE ...
+grep -v 'help' file              # skip all lines with 'help'
+grep -n 'pattern' file           # display line numbers
+grep -c 'pattern' file           # display total count of matches
+grep -l 'patterns' files*        # only display list of matching files
+grep -e 'expr1' -e 'expr2'       # use multiple expression to match
+grep 'pattern' -f file1 -f file2 # shows multiple patterns matching one per line
+grep -E 'a|b$' file              # match regular expression a or end with b
+grep -F 'regex' file             # match the pattern as is even though is a regular expression

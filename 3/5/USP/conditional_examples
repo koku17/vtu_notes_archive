@@ -1,0 +1,8 @@
+case $yesno in
+	'Y'|'y'|"yes")
+		echo "Selected Yes" ;;
+	'N'|'n'|"no")
+		echo "Selected Yes" ;;
+	*)
+		echo "Invalid Choice" ;;
+esac

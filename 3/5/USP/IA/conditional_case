@@ -1,0 +1,12 @@
+case $var in
+	pat1)
+		commands ;;
+	pat2)
+		commands ;;
+			:
+			:
+	pat3)
+		commands ;;
+	*)
+	default-commands ;;
+esac

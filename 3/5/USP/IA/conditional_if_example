@@ -1,0 +1,5 @@
+if [ $USER = "root" ] ; then
+	echo "Current user is a root"
+else
+	echo "Current user is not a root user"
+fi

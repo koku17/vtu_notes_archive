@@ -1,0 +1,7 @@
+Enter the File name : IA-2.tex
+Enter the Pattern : doc|author
+
+\documentclass{article}
+\author{koku17}
+\begin{document}
+\end{document}

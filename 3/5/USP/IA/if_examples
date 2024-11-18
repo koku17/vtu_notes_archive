@@ -1,0 +1,6 @@
+if [ $UID -eq 0 ]
+then
+	echo "Your are Super user"
+else
+	echo "Your are Normal user"
+fi

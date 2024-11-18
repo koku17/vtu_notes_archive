@@ -1,0 +1,23 @@
+# Simple if
+if [ condition ] ; then commands ; fi # on success
+
+# If else
+if [ condition ]
+then
+	commands # on success
+else
+	commands # on failure
+fi
+
+# If else ladder
+if [ condition ]
+then
+	commands
+elif [ conditon ]
+	commands
+elif [ conditon ]
+		:
+else
+	commands
+fi
+	

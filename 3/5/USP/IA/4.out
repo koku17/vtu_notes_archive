@@ -1,0 +1,30 @@
+Select your choice :
+
+1. Current User     [1]
+2. List of files    [2]
+3. Todays date      [3]
+4. Process status   [4]
+5. Contents of file [5]
+6. Exit             [6]
+
+> 1
+user
+
+> 2
+ IA        'Module 1.pdf'  'Module 2.pdf'  'Module 3.pdf'  'Module 4.pdf'  'Module 5.pdf'
+ makefile  'Module 1.tex'  'Module 2.tex'  'Module 3.tex'  'Module 4.tex'  'Module 5.tex'
+
+> 3
+Sunday 17 November 2024 12:01:15 AM IST
+
+> 4
+    PID TTY          TIME CMD
+  27151 pts/3    00:00:01 bash
+  61582 pts/3    00:00:00 sh
+  61586 pts/3    00:00:00 ps
+
+> 5
+Enter file to display : /etc/hostname
+host
+
+> 6
