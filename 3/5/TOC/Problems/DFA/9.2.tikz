@@ -2,13 +2,13 @@
 	\centering
 	\begin{tikzpicture}
 		\draw
-			node [state,initial]               (q0) {$q_0$}
-			node [state,above right of=q0]     (q1) {$q_1$}
-			node [state,right of=q1]           (q2) {$q_2$}
-			node [state,accepting,right of=q2] (q3) {$q_3$}
-			node [state,below right of=q4]     (q4) {$q_4$}
-			node [state,right of=q4]           (q5) {$q_5$}
-			node [state,right of=q5]           (q6) {$q_6$}
+			node[state,initial]               (q0) {$q_0$}
+			node[state,above right of=q0]     (q1) {$q_1$}
+			node[state,right of=q1]           (q2) {$q_2$}
+			node[state,accepting,right of=q2] (q3) {$q_3$}
+			node[state,below right of=q4]     (q4) {$q_4$}
+			node[state,right of=q4]           (q5) {$q_5$}
+			node[state,right of=q5]           (q6) {$q_6$}
 
 			(q0) edge[below]      node{$a$}   (q1)
 			(q1) edge[above]      node{$b$}   (q2)

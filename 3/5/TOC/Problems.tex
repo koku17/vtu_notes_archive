@@ -7,8 +7,9 @@
 \usepackage{calc}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage{pgffor}
 \usepackage{multirow}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
 \usepackage{tikz}
 
@@ -29,6 +30,8 @@
 }
 
 % macros
+\definecolor{BrightGreen}{rgb}{.4, 1, 0}
+\def\hltt{\color{BrightGreen}}
 \newcommand{\module}[1]{
 	\phantomsection
 	\begin{center}
@@ -139,14 +142,12 @@
 						\end{tabular}
 					\end{table}
 				\item Final DFA
-					\begin{table}[H]
+					\begin{figure}[H]
 						\centering
-						\begin{tabular}{c}
-							\input{Problems/DFA/3.3.tikz} \\
-							OR \\
+							\input{Problems/DFA/3.3.tikz}
+							$$\text{OR}$$
 							\input{Problems/DFA/3.x.tikz}
-						\end{tabular}
-					\end{table}
+					\end{figure}
 				\item Language $$\text{L}=\{ab^n~|~n\ge0\}$$
 			\end{enumerate} \newpage
 
@@ -281,7 +282,7 @@
 	\que{Draw a DFA to accept the language $\text{L}=\{\text{W}:n_a(\text{W})\ge1,n_b(\text{W})=2\}$}{
 		Accept the language $\text{L}=\{\text{W}:n_a(\text{W})\ge1,n_b(\text{W})=2\}$
 	}
-	\ans String should have exactly two $b$'s and atleast one $a$'s
+	\ans String should have exactly two $b$'s and at least one $a$'s
 		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
 			\item Minimum String is $abb,bab,bba$
 			\item Skeleton DFA's 
@@ -310,7 +311,7 @@
 		}{~Accept the string starting with $0$'s and $1$'s}
 		\ans
 		\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
-			\item Identify the radiax, input alphabets and the divisor
+			\item Identify the radix, input alphabets and the divisor
 				\begin{align*}
 					r&=2 \\
 					d&=\{0,1\} \\
@@ -343,7 +344,7 @@
 		}
 		\ans
 			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
-				\item Identify the radiax, input alphabets and the divisor
+				\item Identify the radix, input alphabets and the divisor
 					\begin{align*}
 						r&=10 \\
 						d&=\{0,1,2,3,4,5,6,7,8,9\} \\
@@ -371,14 +372,14 @@
 							\end{tabular} &
 							\begin{tabular}{lll}
 								$\delta(q_0\{0,3,6,9\})$ & $=$ & $q_0$ \\
-								$\delta(q_0\{1,4,7\})$ & $=$ & $q_1$ \\
-								$\delta(q_0\{2,5,8\})$ & $=$ & $q_2$ \\
+								$\delta(q_0\{1,4,7\})$   & $=$ & $q_1$ \\
+								$\delta(q_0\{2,5,8\})$   & $=$ & $q_2$ \\
 								$\delta(q_1\{0,3,6,9\})$ & $=$ & $q_1$ \\
-								$\delta(q_1\{1,4,7\})$ & $=$ & $q_2$ \\
-								$\delta(q_1\{2,5,8\})$ & $=$ & $q_0$ \\
+								$\delta(q_1\{1,4,7\})$   & $=$ & $q_2$ \\
+								$\delta(q_1\{2,5,8\})$   & $=$ & $q_0$ \\
 								$\delta(q_2\{0,3,6,9\})$ & $=$ & $q_2$ \\
-								$\delta(q_2\{1,4,7\})$ & $=$ & $q_0$ \\
-								$\delta(q_2\{2,5,8\})$ & $=$ & $q_1$ \\
+								$\delta(q_2\{1,4,7\})$   & $=$ & $q_0$ \\
+								$\delta(q_2\{2,5,8\})$   & $=$ & $q_1$
 							\end{tabular} \\ ~\vspace{-.5em} \\
 							Transitions & Counter DFA
 						\end{tabular}
@@ -427,7 +428,7 @@
 						\item Remainder 1, the state is $q_1$
 						\item Remainder 2, the state is $q_2$
 					\end{itemize}
-				\item Identify the start and final state
+				\item Identify the initial and accepting states
 					\begin{itemize}[leftmargin=2.5em]
 						\item In case of no input, the state is accepted
 						\item In case of three or multiple for three input the state is accepted
@@ -506,7 +507,7 @@
 		\que{
 			Obtain a DFA to accept language $\text{L}=\{\text{W} : |\text{W}| \mod 5 \ne 0\}$ on
 			$\displaystyle\sum = \{a\}$
-		}{~Accept language $\text{L}=\{\text{W} : |\text{W}| \mod 5 \ne 0\}$ on $\sum = \{a\}$}
+		}{~Accept language $\text{L}=\{\text{W} : |\text{W}| \mod 5 \ne 0\}$ on $\displaystyle \sum = \{a\}$}
 		\ans
 			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
 				\item Identify states
@@ -518,7 +519,7 @@
 						\item Remainder 3, the state is $q_3$
 						\item Remainder 4, the state is $q_4$
 					\end{itemize}
-				\item Identify the start and final state
+				\item Identify the initial and accepting states
 					\begin{itemize}[leftmargin=2.5em]
 						\item In case of no input, the state is accepted
 						\item In case of five or multiple of five input the state is accepted
@@ -549,6 +550,7 @@
 		\que{Obtain a DFA to accept strings of $a$'s and $b$'s having even number of $a$'s and $b$'s}{
 			Accept strings of $a$'s and $b$'s with even number of $a$'s and $b$'s
 		}
+		\ans
 			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
 				\item Identify the number of states
 				\indentpar{1.5em}{
@@ -560,7 +562,7 @@
 						\item Both $a$'s and $b$'s are odd i.e $\text{O}_a\text{O}_b$
 					\end{itemize}
 				}
-				\item Identify the start and final state
+				\item Identify the initial and accepting states
 					\begin{itemize}[leftmargin=2.5em]
 						\item In case of 0 or multiple of 2 input the state is accepted.
 						\item All the rest of the cases are rejected.
@@ -584,11 +586,306 @@
 								$\delta(\text{E}_a\text{O}_b,a)$ & $=$ & $\text{O}_a\text{E}_b$ \\
 								$\delta(\text{E}_a\text{O}_b,b)$ & $=$ & $\text{E}_a\text{E}_b$ \\
 								$\delta(\text{O}_a\text{O}_b,b)$ & $=$ & $\text{E}_a\text{O}_b$ \\
-								$\delta(\text{O}_a\text{O}_b,b)$ & $=$ & $\text{O}_a\text{E}_b$ \\
+								$\delta(\text{O}_a\text{O}_b,b)$ & $=$ & $\text{O}_a\text{E}_b$
 							\end{tabular}
 						\end{tabular}
 					\end{table}
 				\item Final Design \input{Problems/mod/7.tikz}
 			\end{enumerate}
-	\end{enumerate}
+	\end{enumerate} \newpage
+
+	\subsection{Definite Finite State Machines}
+	\begin{enumerate}[label=\arabic*)]
+		\que{
+			NDFA to accept pairs strings of $a$'s and $b$'s ending with $ab$ and moves made for sequence of
+			$abaab$ and $abb$
+		}{~Accept NDFA for strings ending with $ab$ and moves made for sequence $abaab$ and $abb$}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum String is `$ab$'
+				\item Alphabets $$\sum=\{a\}$$
+				\item Skeleton DFA \input{Problems/NDFA/1.1.tikz}
+				\item Compute Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$ & $a$ & $b$ \\ \hline
+								$q_0$ & $\{q_0,q_1\}$ & $q_0$ \\
+								$q_1$ & $\varnothing$ & $q_2$ \\
+								$q_2$ & $\varnothing$ & $\varnothing$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final NDFA \input{Problems/NDFA/1.2.tikz}
+				\item Moves made for
+					\begin{itemize}
+						\item $abaab$ \input{Problems/NDFA/1.3.tikz}
+						\item $abb$ \input{Problems/NDFA/1.4.tikz}
+					\end{itemize}
+			\end{enumerate} \newpage
+
+		\que{
+			Obtain an NDFA to accept the following language
+			$\text{L}=\{\text{W} : \text{W}\in ababa \text{ or } abab^n\}$
+		}{~Accept language $\text{L}=\{\text{W} : \text{W}\in ababa \text{ or } abab^n\}$}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum string is `$ab$'
+				\item Alphabets $$\sum=\{a,b\}$$
+				\item Skeleton NDFA's \input{Problems/NDFA/2.1.tikz}
+				\item Combining Transitions
+					\indentpar{1.5em}{Combining first states from skeletons i.e $q_0$, $q_4$ as $q_0$}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$ & $a$           & $b$           \\ \hline
+								$q_0$    & $\{q_1,q_5\}$ & $\varnothing$ \\
+								$q_1$    & $\varnothing$ & $q_2$         \\
+								$q_2$    & $q_3$         & $\varnothing$ \\
+								$q_3$    & $\varnothing$ & $q_3$         \\
+								$q_5$    & $\varnothing$ & $q_6$         \\
+								$q_6$    & $q_6$         & $\varnothing$
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0,a)$ & $=$ & $\{q_1,q_5\}$ \\
+								$\delta(q_1,b)$ & $=$ & $q_2$         \\
+								$\delta(q_2,a)$ & $=$ & $q_3$         \\
+								$\delta(q_3,b)$ & $=$ & $q_3$         \\
+								$\delta(q_5,b)$ & $=$ & $q_6$         \\
+								$\delta(q_6,a)$ & $=$ & $q_6$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final NDFA \input{Problems/NDFA/2.2.tikz}
+			\end{enumerate} \newpage
+
+		\que{Design an NDFA to recognize following set of strings $abc$, $abd$ \& $aacd$}{
+			Design ae NDFA to recognize strings $abc$, $abd$ \& $aacd$
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum strings are $abc$, $abd$ and $aacd$
+				\item Alphabets $$\sum=\{a,b,c,d\}$$
+				\item Skeleton NDFA's \input{Problems/NDFA/3.1.tikz}
+				\item Combining Transitions
+					\indentpar{1.5em}{Combining first states from skeletons i.e $q_0$, $q_4$ and $q_8$ as $q_0$}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c|c|c}
+								$\delta$ & $a$ & $b$ & $c$ & $d$ \\ \hline
+								$q_0$ & $\{q_1,q_5,q_9\}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ \\
+								$q_1$ & $\varnothing$ & $q_2$ & $\varnothing$ & $\varnothing$ \\
+								$q_2$ & $\varnothing$ & $\varnothing$ & $q_3$ & $\varnothing$ \\
+								$q_3$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $\varnothing$ \\
+								$q_5$ & $\varnothing$ & $q_6$ & $\varnothing$ & $\varnothing$ \\
+								$q_6$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $q_7$ \\
+								$q_7$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $\varnothing$ \\
+								$q_9$ & $q_{10}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ \\
+								$q_{10}$ & $\varnothing$ & $\varnothing$ & $q_{11}$ & $\varnothing$ \\
+								$q_{11}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $q_{12}$ \\
+								$q_{12}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $\varnothing$
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0,a)$ & $=$ & $\{q_1,q_5,q_9\}$ \\
+								$\delta(q_1,b)$ & $=$ & $q_2$ \\
+								$\delta(q_2,c)$ & $=$ & $q_3$ \\
+								$\delta(q_5,b)$ & $=$ & $q_6$ \\
+								$\delta(q_6,d)$ & $=$ & $q_7$ \\
+								$\delta(q_9,a)$ & $=$ & $q_{10}$ \\
+								$\delta(q_{10},c)$ & $=$ & $q_{11}$ \\
+								$\delta(q_{11},d)$ & $=$ & $q_{12}$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final NDFA \input{Problems/NDFA/3.2.tikz}
+			\end{enumerate} \newpage
+
+		\que{Design an NDFA to recognize following set of strings 0101, 101 \& 011}{
+			Design ae NDFA to recognize strings 0101, 101 \& 011
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Minimum strings are 0101, 101 and 011
+				\item Alphabets $$\sum=\{0,1\}$$
+				\item Skeleton NDFA's \input{Problems/NDFA/4.1.tikz}
+				\item Combining Transitions
+					\indentpar{1.5em}{Combining first states from skeletons i.e $q_0$, $q_5$ and $q_9$ as $q_0$}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$ & $0$ & $1$ \\ \hline
+								$q_0$ & $\{q_1,q_{10}\}$ & $q_6$ \\
+								$q_1$ & $\varnothing$ & $q_2$ \\
+								$q_2$ & $q_3$ & $\varnothing$ \\
+								$q_3$ & $\varnothing$ & $q_4$ \\
+								$q_4$ & $\varnothing$ & $\varnothing$ \\
+								$q_6$ & $q_7$ & $\varnothing$ \\
+								$q_7$ & $\varnothing$ & $q_8$ \\
+								$q_8$ & $\varnothing$ & $\varnothing$ \\
+								$q_{10}$ & $\varnothing$ & $q_{11}$ \\
+								$q_{11}$ & $\varnothing$ & $q_{12}$ \\
+								$q_{12}$ & $\varnothing$ & $\varnothing$
+							\end{tabular} &
+							\begin{tabular}{lll}
+								$\delta(q_0,0)$ & $=$ & $\{q_1,q_{10}\}$ \\
+								$\delta(q_0,1)$ & $=$ & $q_6$ \\
+								$\delta(q_1,1)$ & $=$ & $q_2$ \\
+								$\delta(q_2,0)$ & $=$ & $q_3$ \\
+								$\delta(q_3,1)$ & $=$ & $q_4$ \\
+								$\delta(q_6,0)$ & $=$ & $q_7$ \\
+								$\delta(q_7,1)$ & $=$ & $q_8$ \\
+								$\delta(q_{10},1)$ & $=$ & $q_{11}$ \\
+								$\delta(q_{11},1)$ & $=$ & $q_{12}$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Final NDFA's \input{Problems/NDFA/4.2.tikz}
+			\end{enumerate}
+	\end{enumerate} \newpage
+
+	\subsection{Conversion of DFA to NDFA by Subset Construction}
+	\begin{enumerate}[label=\arabic*)]
+		\que{
+			Obtain the DFA for the following NDFA by Subset Construction method \input{Problems/conv/1.1.tikz}
+		}{
+			Obtain DFA for given NDFA by Subset Construction method
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Find Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{c|c|c}
+							$\delta$ & $a$ & $b$ \\ \hline
+							$q_0$ & $\{q_0,q_1\}$ & $q_0$ \\
+							$q_1$ & $\varnothing$ & $q_2$ \\
+							$q_2$ & $\varnothing$ & $\varnothing$
+						\end{tabular}
+					\end{table}
+				\item Identify initial and accepting state
+					\begin{itemize}[label=,leftmargin=1.5em]
+						\item $\text{F}_0 = \{q_2,\{q_0,q_2\},\{q_0,q_1,q_2\}\}$
+						\item $\text{F}_n = q_2$
+					\end{itemize}
+				\item Identify transitions for all possible subests
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$          & $a$           & $b$           \\ \hline
+								$q_0$             & $\{q_0,q_1\}$ & $q_0$         \\
+								$q_1$             & $\varnothing$ & $q_2$         \\
+								$q_2$             & $\varnothing$ & $\varnothing$ \\
+								$\{q_0,q_1\}$     & $\{q_0,q_1\}$ & $\{q_0,q_2\}$ \\
+								$\{q_1,q_2\}$     & $\varnothing$ & $q_2$         \\
+								$\{q_2,q_0\}$     & $\{q_0,q_1\}$ & $q_0$         \\
+								$\{q_0,q_1,q_2\}$ & $\{q_0,q_1\}$ & $\{q_0,q_2\}$
+							\end{tabular} &
+							\begin{tabular}{clc}
+								$\delta(q_0,a)$             & $=$ & $\{q_0,q_1\}$ \\
+								$\delta(q_0,b)$             & $=$ & $q_0$         \\
+								$\delta(q_1,b)$             & $=$ & $q_2$         \\
+								$\delta(\{q_0,q_1\},a)$     & $=$ & $\{q_0,q_1\}$ \\
+								$\delta(\{q_0,q_1\},b)$     & $=$ & $\{q_0,q_2\}$ \\
+								$\delta(\{q_1,q_2\},b)$     & $=$ & $q_2$         \\
+								$\delta(\{q_2,q_0\},a)$     & $=$ & $\{q_0,q_1\}$ \\
+								$\delta(\{q_0,q_2\},b)$     & $=$ & $q_0$         \\
+								$\delta(\{q_0,q_1,q_2\},a)$ & $=$ & $\{q_0,q_1\}$ \\
+								$\delta(\{q_0,q_1,q_2\},b)$ & $=$ & $\{q_0,q_2\}$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+					\item Convert transitions to DFA
+						\indentpar{1.5em}{Replace Similar elements with a letter}
+						\begin{table}[H]
+							\centering
+							\begin{tabular}{c|c|c}
+								$\delta$     & $a$                & $b$                \\ \hline
+						\hltt	$\text{A}_0$ & \hltt $\text{A}_3$ & \hltt $\text{A}_0$ \\
+								$\text{A}_1$ & $\varnothing$      & $\text{A}_2$       \\
+								$\text{A}_2$ & $\varnothing$      & $\varnothing$      \\
+						\hltt	$\text{A}_3$ & \hltt $\text{A}_3$ & \hltt $\text{A}_5$ \\
+								$\text{A}_4$ & $\varnothing$      & $\text{A}_2$       \\
+						\hltt	$\text{A}_5$ & \hltt $\text{A}_3$ & \hltt $\text{A}_0$ \\
+								$\text{A}_6$ & $\text{A}_3$       & $\text{A}_5$
+							\end{tabular}
+						\end{table}
+				\item Final DFA \input{Problems/conv/1.2.tikz}
+			\end{enumerate}
+	\end{enumerate} \newpage
+
+	\subsection{Conversion of DFA to NDFA by Lazy Evaluation}
+	\begin{enumerate}[label=\arabic*)]
+		\que{Obtain the DFA for the following NDFA by Lazy evaluation method \input{Problems/conv/2.1.tikz}}{
+			Obtain the DFA for the following NDFA by Lazy evaluation method
+		}
+		\ans
+			\begin{enumerate}[label=Step \arabic* :,itemindent=\ansindent]
+				\item Find Transitions
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{c|c|c}
+							$\delta$ & 0             & 1     \\ \hline
+							$q_0$    & $\{q_0,q_1\}$ & $q_1$ \\
+							$q_1$    & $q_2$         & $q_2$ \\
+							$q_2$    & $\varnothing$ & $q_2$
+						\end{tabular}
+					\end{table}
+				\item Identify initial and accepting state
+					\begin{itemize}[label=,leftmargin=1.5em]
+						\item $\text{F}_0=\{q_2,\{q_0,q_2\},\{q_0,q_1,q_2\}\}$
+						\item $\text{F}_1=q_2$
+					\end{itemize}
+				\item Identify transitions for all possible subsets
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{cc}
+							\begin{tabular}{c|c|c}
+								$\delta$          & 0                 & 1             \\ \hline
+								$q_0$             & $\{q_0,q_1\}$     & $q_1$         \\
+								$q_1$             & $q_2$             & $q_2$         \\
+								$q_2$             & $\varnothing$     & $q_2$         \\
+								$\{q_0,q_1\}$     & $\{q_0,q_1,q_2\}$ & $\{q_1,q_2\}$ \\
+								$\{q_1,q_2\}$     & $q_2$             & $q_2$         \\
+								$\{q_0,q_2\}$     & $\{q_0,q_1\}$     & $\{q_1,q_2\}$ \\
+								$\{q_0,q_1,q_2\}$ & $\{q_0,q_1,q_2\}$ & $\{q_1,q_2\}$
+							\end{tabular} &
+							\begin{tabular}{ccc}
+								$\delta(q_0,0)$             & $=$ & $\{q_0,q_1\}$     \\
+								$\delta(q_0,1)$             & $=$ & $q_1$             \\
+								$\delta(q_1,0)$             & $=$ & $q_2$             \\
+								$\delta(q_1,1)$             & $=$ & $q_2$             \\
+								$\delta(q_2,1)$             & $=$ & $q_2$             \\
+								$\delta(\{q_0,q_1\},0)$     & $=$ & $\{q_0,q_1,q_2\}$ \\
+								$\delta(\{q_0,q_1\},1)$     & $=$ & $\{q_1,q_2\}$     \\
+								$\delta(\{q_1,q_2\},0)$     & $=$ & $q_2$             \\
+								$\delta(\{q_1,q_2\},1)$     & $=$ & $q_2$             \\
+								$\delta(\{q_0,q_2\},0)$     & $=$ & $\{q_0,q_1\}$     \\
+								$\delta(\{q_0,q_2\},1)$     & $=$ & $\{q_1,q_2\}$     \\
+								$\delta(\{q_0,q_1,q_2\},0)$ & $=$ & $\{q_1,q_2\}$     \\
+								$\delta(\{q_0,q_1,q_2\},1)$ & $=$ & $\{q_1,q_2\}$
+							\end{tabular}
+						\end{tabular}
+					\end{table}
+				\item Convert transitions to DFA
+					\indentpar{1.5em}{Replace Similar elements with a letter}
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{c|c|c}
+							$\delta$          & 0                       & 1                   \\ \hline
+					\hltt	$q_0$             & $\{q_0,q_1\}$           & $q_1$               \\
+					\hltt	$\{q_0,q_1\}$     & $\{q_0,q_1,q_2\}$       & $\{q_1,q_2\}$       \\
+					\hltt	$q_1$             & $q_2$                   & $q_2$               \\
+					\hltt	$\{q_0,q_1,q_2\}$ & \hltt $\{q_0,q_1,q_2\}$ & \hltt $\{q_1,q_2\}$ \\
+					\hltt	$\{q_1,q_2\}$     & \hltt $q_2$             & \hltt	$q_2$         \\
+					\hltt	$q_2$             & $\varnothing$           & \hltt	$q_2$
+						\end{tabular}
+					\end{table} \newpage
+				\item Final DFA \input{Problems/conv/2.2.tikz}
+			\end{enumerate}
+	\end{enumerate} \newpage
 \end{document}

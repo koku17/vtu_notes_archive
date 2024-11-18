@@ -1,15 +1,15 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\draw
-		node [state,initial]               (q0) {$q_0$}
-		node [state,right of=q0]           (q1) {$q_1$}
-		node [state,accepting,right of=q1] (q2) {$q_2$}
+		\draw
+			node[state,initial]               (q0) {$q_0$}
+			node[state,right of=q0]           (q1) {$q_1$}
+			node[state,accepting,right of=q1] (q2) {$q_2$}
 
-		(q0) edge[above] node{$0$}        (q1)
-		(q1) edge[above] node{$1$}        (q2)
-		(q2) edge[loop above] node{$0,1$} (q2)
-	;
+			(q0) edge[above]      node{$0$}   (q1)
+			(q1) edge[above]      node{$1$}   (q2)
+			(q2) edge[loop above] node{$0,1$} (q2)
+		;
 	\end{tikzpicture} \\
 	Strings starting with $01$
 \end{figure}
@@ -17,16 +17,16 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\draw
-		node [state,initial]               (q3) {$q_3$}
-		node [state,right of=q3]           (q4) {$q_4$}
-		node [state,accepting,right of=q4] (q5) {$q_5$}
+		\draw
+			node[state,initial]               (q3) {$q_3$}
+			node[state,right of=q3]           (q4) {$q_4$}
+			node[state,accepting,right of=q4] (q5) {$q_5$}
 
-		(q3) edge[above] node{$0$}      (q4)
-		(q3) edge[loop above] node{$1$} (q4)
-		(q4) edge[above] node{$1$}      (q5)
-		(q4) edge[loop above] node{$0$} (q5)
-	;
+			(q3) edge[above]      node{$0$} (q4)
+			(q3) edge[loop above] node{$1$} (q4)
+			(q4) edge[above]      node{$1$} (q5)
+			(q4) edge[loop above] node{$0$} (q5)
+		;
 	\end{tikzpicture} \\
 	Strings ending with $01$
 \end{figure}

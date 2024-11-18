@@ -3,16 +3,77 @@
 % packages
 \usepackage[margin=.5in]{geometry}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{algorithmic}
+\usepackage{amsmath,amssymb}
 
 % detailes
 \author{koku17}
 \title{Module 1}
 
+% presets
+
+% macros
+
 \begin{document}
 	\maketitle \thispagestyle{empty} \newpage
 	\tableofcontents \thispagestyle{empty} \newpage \setcounter{page}{1}
 	\section{INTRODUCTION}
+	
+
+	\subsubsection*{Application of Algorithms}
+	\begin{itemize}
+		\item \textbf{Computer Programming} \\
+			Algorithm is used in Computer programming to solve complex problems efficiently like, Sorting,
+			Searching and manuplating data structures.
+		\item \textbf{Artificial Intelligence} \\
+			Algorithm plays critical role in Artificial Intelligence for tasks like Computer vision,
+			Speech Recognition and Natural Language understanding.
+		\item \textbf{Cryptography} \\
+			Algorithm is used in Cryptography such as RSA and AES, which are used to secure data transmission
+			and storage.
+		\item \textbf{Scientific Computing} \\
+			Algorithms are Scientific computing to develop algorithms for tasks such as numerical integration,
+			optimization and simulation.
+		\item \textbf{Game Development} \\
+			Algorithms are used in Game development for tasks such as pathfinding, collision detection, and
+			physics simulation.
+		\item \textbf{Big data processing} \\
+			Algorithm is used in Data processing for tasks such as Data Mining, Machine learning, and
+			Natural Language Processing.
+	\end{itemize}
+
 	\subsection{What is an Algorithm ?}
+	An algorithm is a sequence of unambiguous instructions for solving a problem, i.e., for obtaining a required
+	output for any legitimate input in a finite amount of time.
+
+	\begin{itemize}
+		\item The nonambiguity requirement for each step of an algorithm cannot be compromised.
+		\item The range of inputs for which an algorithm works has to be specified carefully.
+		\item The same algorithm can be represented in several different ways.
+		\item There may exist several algorithms for solving the same problem.
+		\item Algorithms for the same problem can be based on very different ideas and can solve the problem
+			with dramatically different speeds.
+	\end{itemize}
+
+	\subsubsection{Euclid's algorithm}
+	\begin{enumerate}[label=\textbf{Step \arabic* :},itemindent=4em]
+		\item If $n = 0$, return the value of m as the answer and stop otherwise, proceed to Step 2.
+		\item Divide $m$ by $n$ and assign the value of the remainder to $r$.
+		\item Assign the value of $n$ to $m$ and the value of $r$ to $n$, Go to Step 1.
+	\end{enumerate}
+
+	\subsubsection{Algorithm}
+	\begin{algorithmic}
+		\PROCEDURE {}
+		\WHILE {$n\ne0$ do}
+			\STATE $r\gets m\mod n$
+			\STATE $m\gets n$
+			\STATE $n\gets r$
+		\ENDWHILE
+		\RETURN $m$
+	\end{algorithmic}
+
 	\subsection{Fundamentals of Algorithmic Problem Solving}
 
 	\section{FUNDAMENTALS OF THE ANALYSIS OF ALGORITHM EFFICIENCY}

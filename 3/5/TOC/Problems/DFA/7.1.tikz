@@ -1,16 +1,17 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\draw
-		node [state,initial]                                  (q0) {$q_0$}
-		node [state,above right of=q0]                        (q1) {$q_1$}
-		node [state,below right of=q0]                        (q3) {$q_3$}
-		node [state,accepting,right of=q1,label=right:accept] (q2) {$q_2$}
-		node [state,accepting,right of=q3,label=right:accept] (q4) {$q_4$}
-		(q0) edge[below] node{$a$} (q1)
-		(q0) edge[above] node{$b$} (q3)
-		(q1) edge[above] node{$b$} (q2)
-		(q3) edge[above] node{$a$} (q4)
-	;
+		\draw
+			node[state,initial]                                  (q0) {$q_0$}
+			node[state,above right of=q0]                        (q1) {$q_1$}
+			node[state,below right of=q0]                        (q3) {$q_3$}
+			node[state,accepting,right of=q1,label=right:accept] (q2) {$q_2$}
+			node[state,accepting,right of=q3,label=right:accept] (q4) {$q_4$}
+
+			(q0) edge[below] node{$a$} (q1)
+			(q0) edge[above] node{$b$} (q3)
+			(q1) edge[above] node{$b$} (q2)
+			(q3) edge[above] node{$a$} (q4)
+		;
 	\end{tikzpicture}
 \end{figure}
