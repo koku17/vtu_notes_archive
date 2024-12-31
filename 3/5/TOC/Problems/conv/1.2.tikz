@@ -1,0 +1,17 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=1in]
+		\draw
+			node[state,initial]               (a0) {$\text{A}_0$}
+			node[state,right of=a0]           (a3) {$\text{A}_3$}
+			node[state,accepting,right of=a3] (a5) {$\text{A}_5$}
+
+			(a0) edge[above]            node{$a$} (a3)
+			(a0) edge[loop above]       node{$b$} (a0)
+			(a3) edge[loop above]       node{$a$} (a3)
+			(a3) edge[below]            node{$b$} (a5)
+			(a5) edge[bend right,above] node{$a$} (a3)
+			(a5) edge[bend left,below]  node{$b$} (a0)
+		;
+	\end{tikzpicture}
+\end{figure}

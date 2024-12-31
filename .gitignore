@@ -1,0 +1,6 @@
+*.gif
+*.png
+*.pdf
+*.bak
+tmp/
+*.out

@@ -1,0 +1,52 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node[state,initial]               (q0) {$q_0$}
+			node[state,right of=q0]           (q1) {$q_1$}
+			node[state,right of=q1]           (q2) {$q_2$}
+			node[state,accepting,right of=q2] (q3) {$q_3$}
+
+			(q0) edge[above] node{$a$} (q1)
+			(q1) edge[above] node{$b$} (q2)
+			(q2) edge[above] node{$c$} (q3)
+		;
+	\end{tikzpicture} \\
+	$abc$
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node[state,initial]               (q4) {$q_4$}
+			node[state,right of=q4]           (q5) {$q_5$}
+			node[state,right of=q5]           (q6) {$q_6$}
+			node[state,accepting,right of=q6] (q7) {$q_7$}
+
+			(q4) edge[above] node{$a$} (q5)
+			(q5) edge[above] node{$b$} (q6)
+			(q6) edge[above] node{$d$} (q7)
+		;
+	\end{tikzpicture} \\
+	$abd$
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node[state,initial]                (q8)  {$q_8$}
+			node[state,right of=q8]            (q9)  {$q_9$}
+			node[state,right of=q9]            (q10) {$q_{10}$}
+			node[state,right of=q10]           (q11) {$q_{11}$}
+			node[state,accepting,right of=q11] (q12) {$q_{12}$}
+
+			(q8)  edge[above] node{$a$} (q9)
+			(q9)  edge[above] node{$a$} (q10)
+			(q10) edge[above] node{$c$} (q11)
+			(q11) edge[above] node{$d$} (q12)
+		;
+	\end{tikzpicture} \\
+	$aacd$
+\end{figure}

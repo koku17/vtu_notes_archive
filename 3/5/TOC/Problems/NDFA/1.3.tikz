@@ -1,0 +1,30 @@
+\def \sequence{a,b,a,a,b}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=.75in]
+		\draw
+			node[state,initial]   (0) {$q_0$}
+
+			\foreach[count=\j] \i in {1,...,5}{
+				node[state,right of=\the \numexpr \j - 1 \relax] (\j) {$q_0$}
+			}
+
+			node[state,below right of=0]           (6)  {$q_1$}
+			node[state,accepting,below right of=6] (7)  {$q_2$}
+			node[state,below right of=2]           (8)  {$q_1$}
+			node[state,below right of=3]           (9)  {$q_1$}
+			node[state,accepting,below right of=9] (10) {$q_j$}
+
+			\foreach[count=\j] \i in \sequence{
+				(\the \numexpr \j - 1 \relax) edge[above] node{$\i$} (\j)
+			}
+
+			(0) edge[above right] node{$a$} (6)
+			(6) edge[above right] node{$b$} (7)
+			(2) edge[above right] node{$a$} (8)
+			(3) edge[above right] node{$a$} (9)
+			(9) edge[above right] node{$b$} (10)
+		;
+	\end{tikzpicture}
+\end{figure}

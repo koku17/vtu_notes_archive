@@ -1,0 +1,113 @@
+\documentclass{article}
+
+%!TEX program=xelatex
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage[scale=1.1]{newtxtext,newtxmath}
+\usepackage{xcolor}
+
+% details
+\author{koku17}
+\title{SEPM Model Papers}
+
+% ricing
+\def \darkmode{1}
+
+% presets
+\hypersetup{
+	hidelinks
+}
+
+\def \contentsname{Index}
+
+% macro
+\if\darkmode1
+	\pagecolor{black}
+	\color{white}
+\fi
+
+\def \answer{\item [$\rightarrow$]}
+\def \question#1#2{
+	\item \phantomsection #1
+	\ifx~#2
+		\addcontentsline{toc}{subsubsection}{#1}
+	\else
+		\addcontentsline{toc}{subsubsection}{#2}
+	\fi
+}
+
+\def \head#1{
+	\phantomsection
+	\begin{center}
+		\LARGE #1
+	\end{center}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\def \OR{
+	\item[] \phantomsection
+		\begin{center}
+			OR
+		\end{center}
+	\cftaddtitleline{toc}{alone}{\hfill OR \hfill}{}
+}
+
+\def \module#1{
+	\item[] \phantomsection
+	\begin{center} \large Module #1 \end{center}
+	\addcontentsline{toc}{subsection}{Module #1}
+}
+
+\begin{document}
+	\pagenumbering{gobble} \maketitle \newpage
+	\pagenumbering{roman} \tableofcontents \newpage
+	\pagenumbering{arabic} \head{Model Paper 1}
+
+	\begin{enumerate}[label=\arabic*.]
+		\module{1}
+		\question{Define process and explain generic process framework for software engineering}{~}
+		\question{Explain the different attributes are encountered in the vast majority of Web Apps}{~}
+		\OR
+		\question{Compare and contrast Waterfall model and spiral model}{~}
+		\question{Discuss the David Hooker's seven principles of software engineering practice}{~}
+
+		\module{2}
+		\question{With an example, describe the Class Responsibility Collaborator (CRC) modeling}{~}
+		\question{Explain three types of QFD with examples}{~}
+		\OR
+		\question{Explain scenario based model with example}{~}
+		\question{
+			How can you develop an effective use case ? \\
+			Develop a UML use case diagram for home security function
+		}{How can you develop an effective use case ? Develop a UML diagram for home security function}
+
+		\module{3}
+		\question{Elucidate the concepts of extreme programming (XP) with its functional diagram}{~}
+		\question{Elucidate SCRUM process with a neat diagram}{~}
+		\OR
+		\question{
+			What is Agility ? Explain Agility with the cost of change with Diagram. \\
+			Explain the Principles of Agile Software Development
+		}{What is Agility ? Explain Agility with cost of change, Principles of Agile Software Development}
+		\question{Explain Safe Home Security functions for Flow Oriented Modeling and Behavioral Modeling}{~}
+
+		\module{4}
+		\question{Explain the procedure of setting objectives for successful completion of software project}{~}
+		\question{With example explain different categories of Software Projects}{~}
+		\OR
+		\question{Elucidate the concepts in activity planning in software project management}{~}
+		\question{Explain the Risk Evaluation with example}{~}
+
+		\module{5}
+		\question{Define software quality and explain place of software quality in project management}{~}
+		\question{Explain capability process model and CMM key areas}{~}
+		\OR
+		\question{Explain Quality Management Systems with Principles of BSENISO $9001:2000$}{~}
+		\question{List and Explain the Techniques to enhance Software Quality and Software Reliability}{~}
+	\end{enumerate}
+\end{document}
