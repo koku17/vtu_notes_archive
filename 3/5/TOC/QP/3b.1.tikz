@@ -1,0 +1,20 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node[initial,state]                    (1) {~}
+			node[state,above right of=1]           (2) {~}
+			node[state,right of=2]                 (3) {~}
+			node[state,below right of=3,accepting] (4) {~}
+			node[state,below right of=1]           (5) {~}
+			node[state,right of=5]                 (6) {~}
+
+			(1) edge[above left]  node {$\varepsilon$} (2)
+			(2) edge[above]       node {$a$} (3)
+			(3) edge[above right] node {$\varepsilon$} (4)
+			(1) edge[below left]  node {$\varepsilon$} (5)
+			(5) edge[below]       node {$b$} (6)
+			(6) edge[below right] node {$\varepsilon$} (4)
+		;
+	\end{tikzpicture}
+\end{figure}

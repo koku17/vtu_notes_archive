@@ -1,0 +1,47 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[line width=25000sp]
+		\draw
+			(0,0) ellipse (1cm and .5cm) node (hw) {hardware}
+			(0,0) circle (1.2cm) node at (0,.75) {kernel}
+			(0,0) circle (2cm) node[above=1.3cm] {shells}
+			node[below=1.3cm] {\mintinline{bash}{bash}}
+			(0,0) circle (3cm) node at (0,2.45) {\begin{tabular}{c}Application \\ Programs\end{tabular}}
+			node at (-1.77,-1.77) {DBMS}
+			node at (2.5,0) {Mail}
+			node at (1.39,-2.08) {FTP}
+			(0,-2) -- (0,-3)
+			(1.85,-0.77) -- (2.77,-1.15)
+			(1.85,0.77) -- (2.77,1.15)
+			(1.2,0) -- (2,0)
+			(1.11,0.46) -- (1.85,0.77)
+			(0.85,0.85) -- (1.41,1.41)
+			(0.46,1.11) -- (0.77,1.85)
+			(-0.46,1.11) -- (-0.77,1.85)
+			(-0.85,0.85) -- (-1.41,1.41)
+			(-1.11,0.46) -- (-1.85,0.77)
+			(-1.2,0) -- (-3,0)
+			(-1.11,-0.46) -- (-1.85,-0.77)
+			(-0.85,-0.85) -- (-1.41,-1.41)
+			(-0.46,-1.11) -- (-0.77,-1.85)
+			(0.46,-1.11) -- (0.77,-1.85)
+			(0.85,-0.85) -- (1.41,-1.41)
+			(1.11,-0.46) -- (1.85,-0.77)
+	
+			node[above] at (1.6,0) {\mintinline{bash}{env}}
+			node[above,rotate=22.5] at (1.48,0.615) {\mintinline{bash}{w}}
+			node[above,rotate=45] at (1.13,1.13) {\mintinline{bash}{wc}}
+			%node[above,rotate=0] at (0.615,1.48) {\mintinline{bash}{x}}
+			%node[above,rotate=0] at (-0.615,1.48) {\mintinline{bash}{x}}
+			node[above,rotate=-45] at (-1.13,1.13) {\mintinline{bash}{ksh}}
+			node[above,rotate=-22.5] at (-1.48,0.615) {\mintinline{bash}{ssh}}
+			node[above] at (-1.6,0) {\mintinline{bash}{sh}}
+			node[above,rotate=22.5] at (-1.48,-0.615) {\mintinline{bash}{cpp}}
+			node[above,rotate=45] at (-1.13,-1.13) {\mintinline{bash}{ls}}
+			node[above,rotate=67.5] at (-0.615,-1.48) {\mintinline{bash}{vi}}
+			node[above,rotate=-67.5] at (0.615,-1.48) {\mintinline{bash}{ed}}
+			node[above,rotate=-45] at (1.13,-1.13) {\mintinline{bash}{cat}}
+			node[above,rotate=-22.5] at (1.48,-0.615) {\mintinline{bash}{mv}}
+		;
+	\end{tikzpicture}
+\end{figure}

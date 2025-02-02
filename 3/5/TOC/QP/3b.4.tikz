@@ -1,0 +1,52 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=.9]
+		\draw
+			node[initial,state]               (0)  {~}
+			node[state,right of=0]            (1)  {~}
+			node[state,above right of=1]      (2)  {~}
+			node[state,right of=2]            (3)  {~}
+			node[state,below right of=3]      (4)  {~}
+			node[state,below right of=1]      (5)  {~}
+			node[state,right of=5]            (6)  {~}
+			node[state,right of=4]            (7)  {~}
+			node[state,right of=7]            (8)  {~}
+			node[state,right of=8]            (9)  {~}
+			node[state,right of=9]            (10) {~}
+			node[state,right of=10]           (11) {~}
+			node[state,right of=11]           (12) {~}
+			node[state,right of=12]           (13) {~}
+			node[state,above right of=13]     (14) {~}
+			node[state,right of=14]           (15) {~}
+			node[state,below right of=15]     (16) {~}
+			node[state,below right of=13]     (17) {~}
+			node[state,right of=17]           (18) {~}
+			node[state,right of=16,accepting] (19) {~}
+
+			(0)  edge[above]               node {$\varepsilon$} (1)
+			(1)  edge[above left]          node {$\varepsilon$} (2)
+			(2)  edge[above]               node {$a$}           (3)
+			(3)  edge[above right]         node {$\varepsilon$} (4)
+			(1)  edge[below left]          node {$\varepsilon$} (5)
+			(5)  edge[below]               node {$b$}           (6)
+			(6)  edge[below right]         node {$\varepsilon$} (4)
+			(4)  edge[above]               node {$\varepsilon$} (7)
+			(4)  edge[above]               node {$\varepsilon$} (1)
+			(0)  edge[below,bend right=60] node {~}             (7)
+			(7)  edge[above]               node {$\varepsilon$} (8)
+			(8)  edge[above]               node {$b$}           (9)
+			(9)  edge[above]               node {$\varepsilon$} (10)
+			(10) edge[above]               node {$b$}           (11)
+			(11) edge[above]               node {$\varepsilon$} (12)
+			(12) edge[above]               node {$\varepsilon$} (13)
+			(13) edge[above left]          node {$\varepsilon$} (14)
+			(14) edge[above]               node {$a$}           (15)
+			(15) edge[above right]         node {$\varepsilon$} (16)
+			(13) edge[below left]          node {$\varepsilon$} (17)
+			(17) edge[below]               node {$b$}           (18)
+			(18) edge[below right]         node {$\varepsilon$} (16)
+			(16) edge[above]               node {$\varepsilon$} (19)
+			(12) edge[below,bend right=60] node {~}             (19)
+		;
+	\end{tikzpicture}
+\end{figure}

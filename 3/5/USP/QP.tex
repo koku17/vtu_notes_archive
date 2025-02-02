@@ -1,0 +1,516 @@
+\documentclass{article}
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{newtx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{tocloft}
+\usepackage[outputdir=tmp]{minted}
+
+% details
+\author{koku17}
+\title{USP Model Paper}
+
+% ricing
+\def \darkmode{1}
+\if1\darkmode
+	\pagecolor{black}
+	\color{white}
+	\usemintedstyle{one-dark}
+\else
+	\usemintedstyle{gruvbox-light}
+\fi
+
+% presets
+\hypersetup{
+	hidelinks
+}
+\usetikzlibrary{
+	arrows.meta,
+	positioning,
+	shapes.geometric
+}
+
+% macros
+\def \OR{
+	\item [] \phantomsection \begin{center} OR \end{center}
+}
+
+\def \question#1#2#3{
+	\item [#1.] \phantomsection #2
+	\ifx~#3
+		\addcontentsline{toc}{subsection}{#1. #2}
+	\else
+		\addcontentsline{toc}{subsection}{#1. #3}
+	\fi
+}
+
+\def \answer{\item[$\to$]}
+\def \option#1{\mintinline{text}{#1}}
+\def \output#1{{\color{gray}\inputminted{text}{#1}}}
+
+\def \bhead#1{
+	\begin{center}
+		\phantomsection #1
+		\addcontentsline{toc}{section}{#1}
+	\end{center}
+}
+
+\begin{document}
+	\pagenumbering{gobble} \maketitle \newpage
+	\pagenumbering{roman} \tableofcontents \newpage
+	\pagenumbering{arabic}
+	\begin{enumerate}
+		\question{1a}{With the example, explain the following commands}{~}
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{c}{man}
+				\item \mintinline{c}{pwd}
+				\item \mintinline{c}{od}
+				\item \mintinline{c}{cal}
+				\item \mintinline{c}{date}
+			\end{enumerate}
+		\answer
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{bash}{man ls} \output{output/man_ls}
+					\begin{itemize}
+						\item man  is  the  system's  manual  pager
+						\item Each page argument given to man is normally the name of a program, utility or
+							function
+						\item The manual page associated with each of these arguments is then found and
+							displayed
+						\item A section, if provided, will direct man to look only in that section of the manual
+						\item The default action is to search in all of the available sections following a pre
+							defined order, and to show  only the first page found
+								\begin{table}[H]
+									\centering
+									\begin{tabular}{cl}
+										1 & Executable programs or shell commands \\
+										2 & System calls (functions provided by the kernel) \\
+										3 & Library calls (functions within program libraries) \\
+										4 & Special files (usually found in \texttt{/dev}) \\
+										5 & File formats and conventions, e.g. \texttt{/etc/passwd} \\
+										6 & Games \\
+										7 & Miscellaneous (including macro packages and conventions),
+											e.g. \texttt{man(7), groff(7), man-pages(7)} \\
+										8 & System administration commands (usually only for \texttt{root}) \\
+										9 & Kernel routines [Non standard]
+									\end{tabular}
+								\end{table}
+					\end{itemize}
+				\item \mintinline{bash}{pwd} \output{output/pwd}
+					\begin{itemize}
+						\item Print the full filename of the current working directory
+						\item It avoids all the symlinks and displays the directory if the \option{-P}
+					\end{itemize}
+				\item \mintinline{bash}{od /dev/null} \output{output/od}
+					\begin{itemize}
+						\item dump files in octal and other formats
+						\item Write  an  unambiguous representation, octal bytes by default, of FILE to standard
+							output
+						\item With more than one FILE argument, concatenate them in the listed order to form the
+							input
+					\end{itemize} \newpage
+				\item \mintinline{c}{cal 1 1970} \output{output/cal}
+					\begin{itemize}
+						\item The \option{cal} utility displays a simple calendar in traditional format, more
+							options and the date of Easter.
+						\item The new format is a little cramped but it makes a year fit on a $25\times80$
+							terminal.
+						\item If arguments are not specified, the current month is displayed.
+					\end{itemize}
+				\item \mintinline{c}{date --date="1/1/70" +"%tToday is %A, %d %B %Y"} \output{output/date}
+				\begin{itemize}
+					\item Display  date  and  time  in the given FORMAT.
+					\item With \option{-s}, or with \mintinline{bash}{[MMDDhhmm[[CC]YY][.ss]]}, set the date \&
+						time.
+					\item Mandatory arguments to long options are mandatory for short options too.
+				\end{itemize}
+			\end{enumerate} \newpage
+		\question{1b}{%
+			With a neat diagram, explain the kernel and shell relationship in UNIX operating System
+		}{~}
+		\answer \input{figure/1a.tikz}
+			\begin{itemize}
+				\item Kernel
+					\begin{itemize}
+						\item It is the heart of UNIX system.
+						\item It contains two basic parts of the OS, process control and resource management.
+						\item All other components of the system call on the kernel to perform these services
+							for them.
+					\end{itemize}
+				\item Shell
+					\begin{itemize}
+						\item Interface between Kernel and User.
+						\item It functions as command interpreter i,e it receives and interprets the command
+							from user and interacts with the hardware.
+						\item There is only one kernel running on the system, there could be several shells in
+							action one for each user who is logged in.
+						\item Shell has two major parts.
+							\begin{enumerate}[label=\alph*)]
+								\item Interpreter \\
+									It reads your commands and works with the kernel to execute them.
+								\item Shell Programming
+									\begin{itemize}
+										\item It is a programming capability that allows you to write a shell
+											scripts.
+										\item It is also known as shell program.
+										\item A shell script is a file that contains the shell commands that
+											perform a useful function
+										\item There are three standard shells used in UNIX today.
+											\begin{enumerate}
+												\item Bourne shell \\
+													Developed by steve bourne at AT\&T labs, is the oldest.
+												\item Bash (Bourne Again shell) \\
+													An enhanced version of the Bash shell.
+												\item C shell \\
+													Developed in the Berkeley by Bill joy, Its commands look
+													like C statements.
+												\item Tcsh \\
+													A compatible version of C shell.
+												\item Korn shell \\
+													Developed by David Korn, also of AT\&T Labs is the newest
+													and powerful.
+											\end{enumerate}
+									\end{itemize}
+							\end{enumerate}
+					\end{itemize}
+			\item Utilities
+				\begin{itemize}
+					\item A utility is a standard Unix program that provides a support for users.
+					\item Three common utilities are text editors, search programs and sort programs.
+				\end{itemize}
+			\item Applications
+				\begin{itemize}
+					\item They are programs that are not a standard part of UNIX.
+					\item Written by system administrator's professional programmers or users they provide an
+						extended capability to the system.
+				\end{itemize}
+			\end{itemize}
+		\OR
+		\question{2a}{Explain the salient features of Unix Operating System}{~}
+		\answer Several features of UNIX have made it popular. Some of them are :
+			\begin{itemize}
+				\item Portable
+					\begin{itemize}
+						\item UNIX can be installed on many hardware platforms.
+						\item Its widespread use can be traced to the decision to develop it using the C
+							language.
+						\item Because C programs are easily moved from one hardware environment to another, it
+							is relatively simple to port it to different environments.
+					\end{itemize}
+				\item Multiuser
+					\begin{itemize}
+						\item The UNIX design allows multiple users to concurrently share hardware and software
+					\end{itemize}
+				\item Multitasking
+					\begin{itemize}
+						\item UNIX allows a user to run more than one program at a time.
+						\item In fact more than one program can be running in the background while a user is
+							working foreground.
+					\end{itemize}
+				\item Networking
+					\begin{itemize}
+						\item While UNIX was developed to be an interactive, multiuser, multitasking system,
+							networking is also incorporated into the heart of the operating system.
+						\item Access to another system uses a standard communications protocol known as
+							Transmission Control Protocol/Internet Protocol (TCP/IP).
+					\end{itemize}
+				\item Organized File System
+					\begin{itemize}
+						\item UNIX has a very organized file and directory system that allows users to organize
+							and maintain files.
+					\end{itemize}
+				\item Device Independence
+					\begin{itemize}
+						\item UNIX treats input/output devices like ordinary files.
+						\item Input or output to a program can be from any device or file.
+						\item The source or destination for file input and output is easily controlled through a
+							UNIX design feature called redirection.
+					\end{itemize}
+				\item Utilities
+					\begin{itemize}
+						\item UNIX provides a rich library of utilities that can be use to increase user
+							productivity.
+					\end{itemize}
+				\item Services
+					\begin{itemize}
+						\item UNIX also includes the support utilities for system administration and control.
+					\end{itemize}
+			\end{itemize}
+		\question{2b}{%
+			Differentiate between Internal and External commands in UNIX operating system with example
+		}{~}
+		\answer UNIX commands are classified into two types
+			\begin{itemize}
+				\item Internal Commands
+					\begin{itemize}
+						\item Internal commands are something which is built into the shell.
+						\item For the shell built in commands, the execution speed is really high.
+						\item It is because no process needs to be spawned for executing it.
+						\item Example : \mintinline{bash}{echo}, \mintinline{bash}{cd}
+						\item[] \texttt{\$} \mintinline{bash}{type echo cd} \\
+								\texttt{echo is a shell builtin \\ cd is a shell builtin}
+					\end{itemize}
+				\item External Commands
+					\begin{itemize}
+						\item External commands are not built into the shell.
+						\item These are executable present in a separate file.
+						\item When an external command has to be executed, a new process has to be spawned and
+							the command gets executed.
+						\item Example : \mintinline{bash}{ls}, \mintinline{bash}{cat}
+						\item[] \texttt{\$} \mintinline{bash}{type ls cat} \\
+								\texttt{ls is /usr/bin/ls \\ cat is /usr/bin/cat}
+				\def \excmd{
+					\mintinline{bash}{clear_history is aliased to `exec rm -rf .*_history .lesshst .wget-hsts'}
+				}
+						\item[] \texttt{\$} \mintinline{bash}{clear_history} \\ \excmd
+					\end{itemize}
+			\end{itemize}
+		\OR
+		\question{3a}{Explain ~\mintinline{bash}{ls}~ command with all the options}{~}
+		\answer The \verb|ls| command lists all files in the directory that match the name. \\
+			If name is left blank, it will list all of the files in the directory. \\ ~ \\
+			\textbf{Syntax} \\ \verb|ls [options] [names]|
+			\begin{table}[H]
+				\centering
+				\begin{tabular}{c|l}
+					Option & \multicolumn{1}{|c}{Description} \\ \hline
+					\option{-a} & Displays all files \\
+					\option{-b} & Displays non-printing characters in octal \\
+					\option{-c} & Displays files by file time-stamp \\
+					\option{-C} & Displays files in a columnar format (default) \\
+					\option{-d} & Displays only directories \\
+					\option{-f} & Interprets each name as a directory, not a file \\
+					\option{-F} & Flags filenames \\
+					\option{-g} & Displays the long format listing, but exclude the owner name \\
+					\option{-i} & Displays the inode for each file \\
+					\option{-1} & Displays the long format listing \\
+					\option{-L} & Displays the file or directory referenced by a symbolic link \\
+					\option{-m} & Displays the names as a comma-separated list \\
+					\option{-n} & Displays the long format listing, with GID and UID numbers \\
+					\option{-o} & Displays the long format listing, but excludes group name \\
+					\option{-p} & Displays directories with / \\
+					\option{-q} & Displays all non-printing characters as ? \\
+					\option{-r} & Displays files in reverse order \\
+					\option{-R} & Displays subdirectories as well \\
+					\option{-t} & Displays newest files first. (based on time-stamp) \\
+					\option{-u} & Displays files by the file access time \\
+					\option{-x} & Displays files as rows across the screen \\
+					\option{-1} & Displays each entry on a line
+				\end{tabular}
+			\end{table}
+		\question{3b}{Define wild cards ? Explain various shell wild cards with suitable example}{~}
+		\answer \textbf{Wild Cards} \\
+			The meta-characters that are used to construct the generalized pattern for matching filenames
+			belong to the category called wild cards.
+			\begin{itemize}
+				\item Asterisks \verb|[*]|
+					\begin{itemize}
+						\item The meta-character \verb|*| is one of the characters of the shell wild card set
+						\item It matches any number of characters including none
+						\item Example :
+							\begin{itemize}
+								\item \mintinline{bash}{ls *.pdf *.csv         # list pdf and csv files}
+								\item \mintinline{bash}{convert *.png anim.gif # create a gif from images}
+							\end{itemize}
+					\end{itemize}
+				\item Question mark \verb|[?]|
+					\begin{itemize}
+						\item It matches a single character like alphanumeric and special characters in the
+							ascii table
+						\item Example :
+							\begin{itemize}
+								\item \mintinline{bash}{rename 's/^draft//' draft?.tex   # remove prefix draft}
+								%\item \mintinline{bash}{rename 's/.docx$/.pdf/' hi?.docx # change extension}
+							\end{itemize}
+					\end{itemize}
+				\item Dot [$\cdot$]
+					\begin{itemize}
+						\item The dot metachacter can be used to match all the hidden files in your directory
+						\item Example
+							\begin{itemize}
+								\item \verb|$| \mintinline{bash}{ls ?.*}
+								\item \verb|$| \mintinline{bash}{stat ??.???}
+							\end{itemize}
+					\end{itemize} \newpage
+				\item The character class \verb|([ ])|
+					\begin{itemize}
+						\item This class comprises a set of charcters enclosed by the rectangular brackets
+							\verb|[and]|, but it matches only a single character in the class.
+						\item The pattern \verb|[abed]| is a character class and it matches a single character
+							\verb|a, b, c| or \verb|d|
+						\item Negating character class is done by using \verb|[!]|
+						\item Example
+							\begin{itemize}
+								\item \verb|$| \mintinline{bash}{ls [0-9][a-z]??.txt}
+								\item \verb|$| \mintinline{bash}{cat *.[!oc]}
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+		\OR
+		\question{4a}{Explain changing file permissions in relative and absolute manner}{~}
+		\answer A file or a directory is created with a default s t of permissions, which can be detennin d by
+			umask 
+			\begin{enumerate}[label=\roman*)]
+				\item Relative Permission
+					\begin{itemize}
+						\item \verb|chmod| only changes the permissions specified in the command line and leaves
+							the other permissions unchanged.
+						\item \textbf{syntax} \\
+							\verb|$ chmod category operation permission file(s)|
+						\item The below shows the abbreviations used by \verb|chmod| command
+							\begin{table}[H]
+								\centering
+								\begin{tabular}{l|l|l}
+									Category & Operation & Permission \\ \hline
+									u - user & + assign & r - read \\
+									g - group & - remove & w - write \\
+									o - other & = absolute & x - execute \\
+									a - (ugo) & &
+								\end{tabular}
+							\end{table}
+					\end{itemize}
+				\item Absolute Permissions
+					\begin{itemize}
+						\item A string of three octal digits is used as an expression.
+						\item The permission can be represented by one octal digit for each category.
+						\item For ach cat gory, we add octal digits.
+						\item If we represent the permission of each category by one octal digit, this is how
+							the permission can be represented :
+							\begin{table}[H]
+								\centering
+								\begin{tabular}{c|c}
+									Permission & Value \\ \hline
+									Read & 4 (octal 100) \\
+									Write & 2 (octal 010) \\
+									Execute & 1 (octal 001)
+								\end{tabular} \\ ~\vspace{1em} \\
+								\begin{tabular}{c|c|l}
+									Octal & Permissions & Significance \\ \hline
+									0 & \verb|---| & no permissions \\
+									1 & \verb|--x| & execute only \\
+									2 & \verb|-w-| & write only \\
+									3 & \verb|-wx| & write and execute \\
+									4 & \verb|r--| & read only \\
+									5 & \verb|r-x| & read and execute \\
+									6 & \verb|rw-| & read and write \\
+									7 & \verb|rwx| & read, write and execute
+								\end{tabular}
+							\end{table}
+					\end{itemize}
+			\end{enumerate}
+		\question{4b}{%
+			Explain ~\mintinline{bash}{if}~ and ~\mintinline{bash}{while}~ control statements in shell scripts
+			with suitable program
+		}{~}
+		\OR
+		\question{5a}{ Explain the following functions with their prototypes and examples}{~}\!:
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{c}{mkdir ()}
+				\item \mintinline{c}{rmdir ()}
+				\item \mintinline{c}{fcntl ()}
+			\end{enumerate}
+		\question{5b}{Discuss the various UNIX system implementation}{~}
+		\OR
+		\question{6a}{With a neat diagram explain how a C program is started and terminated}{~}
+		\question{6b}{Explain ~\mintinline{c}{getrlimit ()}~ and ~\mintinline{c}{setrlimit ()}~ APIs}{~}
+		\OR
+		\question{7a}{
+			Explain the ~\mintinline{c}{fork ()}~ and ~\mintinline{c}{vfork ()}~ system calls \\
+			How does ~\mintinline{c}{fork ()}~ differ from ~\mintinline{c}{vfork ()}~ ?
+		}{%
+			Explain the ~\mintinline{c}{fork ()}~ and ~\mintinline{c}{vfork ()}~ system calls.
+			How does ~\mintinline{c}{fork ()}~ differ from ~\mintinline{c}{vfork ()}~ ?
+		}
+		\question{7b}{Write short notes on the following with examples}{~}\!:
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{c}{exec ()}
+				\item Race conditions
+			\end{enumerate}
+		\OR
+		\question{8a}{
+			What are pipes ? What are its limitations ? \\
+			Write a program to send data from parent to child over a pipe.
+		}{%
+			What are pipes ? What are its limitations ?
+			Write a program to send data from parent to child over a pipe.
+		}
+		\question{8b}{What is a FIFO ? With a neat diagram explain client server communication using FIFO.}{~}
+		\OR
+		\question{9a}{Define Signal ? Explain ~\mintinline{c}{sigprocmask ()}~ function with a program}{~}
+		\question{9b}{Explain Daemon characteristics and coding rules}{~}
+		\OR
+		\question{\!\!10a}{What is a daemon process ? Explain coding rules and error logging}{~}
+		\question{\!\!10b}{Explain the following functions}{~}\!:
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{c}{system ()}
+				\item \mintinline{c}{sleep ()}
+			\end{enumerate}
+		\answer
+			\begin{enumerate}[label=\roman*)]
+				\item \mintinline{c}{system ()}
+					\begin{itemize}
+						\item ISO C defines the system function, but its operation is strongly system dependent
+						\item POSIX.1 includes the system interface, expanding on the ISO C definition to
+							describe its behavior in a POSIX environment.
+						\item \textbf{syntax} \inputminted{c}{functions/system.c}
+						\item If \verb|cmdstring| is a null pointer, system returns nonzero only if a command
+							processor is available.
+						\item This feature determines whether the system function is supported on a given
+							operating system.
+						\item The \mintinline{c}{system ()} is implemented by calling
+							\mintinline{c}{fork ()}, \mintinline{c}{exec ()}, and \mintinline{c}{waitpid ()}
+							there are three types of return values.
+							\begin{itemize}
+								\item If either the \mintinline{c}{fork ()} fails or \mintinline{c}{waitpid ()}
+									returns an error other than \verb|EINTR|, \mintinline{c}{system ()} returns
+									-1 with \verb|errno| set to indicate the error.
+								\item If the \mintinline{c}{exec ()} fails, implying that the shell can't be
+									executed, the return value is as if the shell had executed
+									\mintinline{c}{exit (127)}.
+								\item Otherwise, all three functions \mintinline{c}{fork ()},
+									\mintinline{c}{exec ()}, and \mintinline{c}{waitpid ()} succeed, and the
+									return value from \mintinline{c}{system ()} is the termination status of the
+									shell, in the format specified for \mintinline{c}{waitpid ()}.
+						\end{itemize}
+					\end{itemize}
+				\item \mintinline{c}{sleep ()}
+					\begin{itemize}
+						\item This function causes the calling process to be suspended until either
+							\begin{itemize}
+								\item The amount of wall clock time specified by seconds has elapsed
+								\item A signal is caught by the process and the signal handler returns
+							\end{itemize}
+						\item \textbf{syntax} \inputminted{c}{functions/sleep.c}
+						\item As with an alarm signal, the actual return may occur at a time later than
+							requested because of other system activity
+						\item The \mintinline{c}{nanosleep ()} function is similar to the sleep function, but
+							provides nanosecond-level granularity.
+						\item \textbf{syntax} \inputminted{c}{functions/nanosleep.c}
+						\item This function suspends the calling process until either the requested time has
+							elapsed or the function is interrupted by a signal
+						\item The reqtp parameter specifies the amount of time to sleep in seconds and
+							nanoseconds
+						\item If the sleep interval is interrupted by a signal and the process doesn't
+							terminate, the \verb|timespec| structure pointed to by the \verb|remtp| parameter
+							will be set to the amount of time left in the sleep interval
+						\item \textbf{syntax} \inputminted{c}{functions/clock_nanosleep.c}
+						\item A way to suspend the calling thread using a delay time relative to a particular
+							clock
+						\item The \verb|clock_id| argument specifies the clock against which the time delay is
+							evaluated.
+						\item The \verb|flags| argument is used to control whether the delay is absolute or
+							relative.
+						\item When flags is set to 0, the sleep time is relative
+						\item When it is set to \verb|TIMER_ABSTIME|, the sleep time is absolute
+					\end{itemize}
+			\end{enumerate}
+	\end{enumerate} \newpage
+	\vspace*{\fill} \thispagestyle{empty}
+			\centering \emph{This page is left blank intentionally}
+	\vfill
+\end{document}

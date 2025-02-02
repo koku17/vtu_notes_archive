@@ -3,24 +3,31 @@
 %!TEX program=xelatex
 
 % package
-\usepackage[margin=.5in]{geometry}
+\usepackage[margin=.25in]{geometry}
 \usepackage{amsmath}
 \usepackage{hyperref}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}
 \usepackage{svg}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{newtxtext,newtxmath}
 
 % details
 \author{koku17}
 \title{Module 1}
 
 % presets
-% presets
 \hypersetup{
 	hidelinks
 }
+\def \contentsname{Index}
+\def \listfigurename{Figures}
+\def \listtablename{Tables}
+\titleformat*{\section}{\LARGE}
+\titleformat*{\subsection}{\Large}
+\titleformat*{\subsubsection}{\large}
 
 % ricing
 \def \darkmode{1}
@@ -33,40 +40,42 @@
 % macro
 \def \answer{\item [$\rightarrow$]}
 \begin{document}
-	\pagenumbering{gobble} \maketitle \newpage
-	\pagenumbering{roman} \tableofcontents \newpage
+	\pagenumbering{gobble}
+	\pdfbookmark[1]{Title}{Title}     \maketitle       \newpage
+	\pagenumbering{roman}
+	\pdfbookmark[1]{Index}{Index}     \tableofcontents \newpage
+	\pdfbookmark[1]{Figures}{Figures} \listoffigures   \newpage
+	\pdfbookmark[1]{Tables}{Tables}   \listoftables    \newpage
 	\pagenumbering{arabic}
 
 	\section{Software and Software Engineering}
 	\subsection{The nature of Software}
-	\par Software is an information transformer-producing, managing, acquiring, modifying, displaying, or
-	transmitting information that can be as simple as a single bit or as complex as a multimedia presentation
-	derived from data acquired from dozens of independent sources. \\
-
-	\par Software acts as the basis for the control of the computer (operating systems), the communication of
-	information (networks), and the creation and control of other programs (software tools and environments). \\
-
-	\par Software delivers the most important product of our time-information.
-	It transforms personal data (an individual's financial transactions) so that the data can be more
-	useful in a local context.
-	It provides a gateway to worldwide information networks (Internet), and provides the means for
-	acquiring information in all of its forms. \\
-
-	\par Dramatic improvements in hardware performance, profound changes in computing architectures, vast
-	increases in memory and storage capacity, and a wide variety of exotic input and output options, have all
-	precipitate more sophisticated and complex computer-based systems. \\
-
-	\par Sophistication and complexity can produce dazzling results when a system succeeds, but they can also
-	pose huge problems for those who must build complex systems. \\
-
-	Questions that are asked when modern computer based systems are built :
 	\begin{itemize}
-		\item Why does it take so long to get software finished ?
-		\item Why are development costs so high ?
-		\item Why cant we find all errors before we give the software to our customers ?
-		\item Why do we spend so much time and effort maintaining existing programs ?
-		\item Why do we continue to have difficulty in measuring progress as software is being developed and
-			maintained ?
+		\item Software is an information transformer producing, managing, acquiring, modifying, displaying, or
+			transmitting information that can be as simple as a single bit or as complex as a multimedia
+			presentation derived from data acquired from dozens of independent sources.
+		\item Software acts as the basis for the control of the computer (operating systems), the communication
+			of information (networks), and the creation and control of other programs (software tools and
+			environments).
+		\item Software delivers the most important product of our time information.
+			It transforms personal data (an individual's financial transactions) so that the data can be more
+			useful in a local context.
+			It provides a gateway to worldwide information networks (Internet), and provides the means for
+			acquiring information in all of its forms.
+		\item Dramatic improvements in hardware performance, profound changes in computing architectures, vast
+			increases in memory and storage capacity, and a wide variety of exotic input and output options,
+			have all precipitate more sophisticated and complex computer based systems.
+		\item Sophistication and complexity can produce dazzling results when a system succeeds, but they can
+			also pose huge problems for those who must build complex systems.
+		\item Questions that are asked when modern computer based systems are built :
+		\begin{itemize}
+			\item Why does it take so long to get software finished ?
+			\item Why are development costs so high ?
+			\item Why cant we find all errors before we give the software to our customers ?
+			\item Why do we spend so much time and effort maintaining existing programs ?
+			\item Why do we continue to have difficulty in measuring progress as software is being developed and
+				maintained ?
+		\end{itemize}
 	\end{itemize}
 
 	\subsubsection{Defining Software}
@@ -81,7 +90,7 @@
 
 	\subsubsection{Characteristics of Software}
 	\begin{enumerate}[label=\arabic*.]
-		\item \textbf{Software is developed or engineered; it is not manufactured in the classical sense}
+		\item Software is developed or engineered; it is not manufactured in the classical sense
 			\begin{itemize}
 				\item High quality is achieved through good design, but the manufacturing phase for hardware
 					can introduce quality problems that are nonexistent (or easily corrected) for software.
@@ -92,18 +101,12 @@
 				\item Software costs are concentrated in engineering. This means that software projects cannot
 					be managed as if they were manufacturing projects.
 			\end{itemize}
-		\begin{figure}[H]
-			\centering
-			\includesvg{res/Failure curve for hardware}
-			\caption{Failure curve for hardware a.k.a Bathtub Curve}
-		\end{figure} \newpage
-
-		\item \textbf{Software doesn't ``wear out"}
 			\begin{figure}[H]
 				\centering
-				\includesvg{res/Failure curve for software}
-				\caption{Failure curve for software}
+				\includesvg{"res/Failure curve for hardware"}
+				\caption{Failure curve for hardware a.k.a Bathtub Curve}
 			\end{figure}
+		\item Software doesn't ``wear out"
 			\begin{itemize}
 				\item Hardware exhibits relatively high failure rates early in its life (design or manufacturing
 					defects); defects are corrected and the failure rate drops to a steady state level (quite
@@ -119,12 +122,15 @@
 					oversimplification of actual failure models for software.
 					The implication is clear software doesn't wear out. But it does deteriorate!
 			\end{itemize}
-		\item \textbf{
-			Although the industry is moving toward component-based construction, most software continues to be
+			\begin{figure}[H]
+				\centering
+				\includesvg{"res/Failure curve for software"}
+				\caption{Failure curve for software}
+			\end{figure}
+		\item Although the industry is moving toward component based construction, most software continues to be
 			custom built
-		}
 		\begin{itemize}
-			\item Standard screws and off-the-shelf integrated circuits are only two of thousands of standard
+			\item Standard screws and off the shelf integrated circuits are only two of thousands of standard
 				components that are used by mechanical and electrical engineers as they design new systems.
 			\item The reusable components have been created so that the engineer can concentrate on the truly
 				innovative elements of a design, that is, the parts of the design that represent something new. 			\item In the hardware world, component reuse is a natural part of the engineering process.
@@ -134,153 +140,324 @@
 				Modern reusable components encapsulate both data and the processing that is applied to the
 				data, enabling the software engineer to create new applications from reusable parts.
 			\item Interactive user interfaces are built with reusable components that enable the creation of
-				graphics windows, pull-down menus, and a wide variety of interaction mechanisms.
+				graphics windows, pull down menus, and a wide variety of interaction mechanisms.
 			\item The data structures and processing detail required to build the interface are contained within
 				a library of reusable components for interface construction.
 		\end{itemize}
 	\end{enumerate} \newpage
 
-	\subsection{The unique nature of Web Apps}
-	\begin{enumerate}
-		\item \textbf{Network intensiveness} \\
-			A Web App resides on a network and must serve the needs of a diverse community of clients.
-			The network may enable world-wide access and communication (by Internet) or more limited access and
-				communication (corporate intranet).
-
-		\item \textbf{Concurrency} \\
-			A large number of users may access the Web App at one time.
-			In many cases, the patterns of usage among end users will vary greatly. Unpredictable load.
-			The number of users of the Web App may vary by orders of magnitude from day to day.
-			One hundred users may show up on Monday; 10,000 may use the system on Thursday.
-
-		\item \textbf{Performance} \\
-			If a Web App user must wait too long (for access, for server-side processing, for client-side
-				formatting and display), he or she may decide to go elsewhere.
-
-		\item \textbf{Availability} \\
-			Although expectation of 100 percent availability is unreasonable, users of popular Web Apps often
-				demand access on a 24 $\times$ 7/365 basis.
-			Users in Australia or Asia might demand access during times when traditional domestic software
-				applications in North America might be taken offline for maintenance.
-
-		\item \textbf{Data driven} \\
-			The primary function of many Web Apps is to use hypermedia to present text, graphics, audio, and
-			video content to the end user.
-		In addition, Web Apps are commonly used to access information that exists on data-bases that are not an
-			integral part of the Web based environment (e-commerce or financial applications).
-
-		\item \textbf{Content sensitive} \\
-			The quality and aesthetic nature of content remains an important determinant of the quality of a Web
-				App
-
-		\item \textbf{Continuous evolution} \\
-			Unlike conventional application software that evolves over a series of planned, chronologically
-				spaced releases, Web applications evolve continuously.
-			It is not unusual for some Web Apps (specifically, their content) to be updated on a minute by
-				minute schedule or for content to be independently computed for each request.
-
-		\item \textbf{Immediacy} \\
-			Although immediacy the compelling need to get software to market quickly is a characteristic of many
-				application domains, Web Apps often exhibit a time to market that can be a matter of a few days
-				or weeks
-
-		\item \textbf{Security} \\
-			Because Web Apps are available via network access, it is difficult, if not impossible, to limit the
-				population of end users who may access the application.
-			In order to protect sensitive content and provide secure modes of data transmission, strong security
-				measures must be implemented throughout the infrastructure that supports a Web App and within
-				the application itself.
-
-		\item \textbf{Aesthetics} \\
-			An undeniable part of the appeal of a Web App is its look and feel.
-			When an application has been designed to market or sell products or ideas, aesthetics may have as
-			much to do with success as technical design.
-	\end{enumerate} \newpage
-
 	\subsubsection{Software Application Domains}
 	\begin{enumerate}[label=\arabic*)]
-		\item \textbf{System software} \\
-			A collection of programs written to service other programs.
-			Some system software (e.g., compilers, editors, and file management utilities) processes complex,
-				but determinate, information structures.
-			Other systems applications (e.g., operating system components, drivers, networking software,
-				telecommunications processors) process largely indeterminate data.
-			In either case, the systems software area is characterized by heavy interaction with computer
-				hardware; heavy usage by multiple users; concurrent operation that requires scheduling, resource
-				sharing, and sophisticated process management; complex data structures; and multiple external
-				interfaces.
+		\item System software
+			\begin{itemize}
+				\item A collection of programs written to service other programs.
+				\item Some system software (e.g., compilers, editors, and file management utilities) processes
+					complex, but determinate, information structures.
+				\item Other systems applications (e.g., operating system components, drivers, networking
+					software, telecommunications processors) process largely indeterminate data.
+				\item In either case, the systems software area is characterized by heavy interaction with
+					\begin{itemize}
+						\item Computer hardware
+						\item Heavy usage by multiple users
+						\item Concurrent operation that requires scheduling, Resource sharing, and
+							Sophisticated process management
+						\item Complex data structures
+						\item Multiple external interfaces
+				\end{itemize}
+			\end{itemize}
 
-		\item \textbf{Application software} \\
-			Standalone programs that solve a specific business need.
-			Applications in this area process business or technical data in a way that facilitates business
-				operations or management/technical decision making.
-			In addition to conventional data processing applications, application software is used to control
-				business functions in real time (e.g., point-of-sale transaction processing, real time
-				manufacturing process control)
-
-		\item \textbf{Engineering/scientific software} \\
-			It has been characterized by ``number crunching" algorithms.
-			Applications range from astronomy to volcanology, from automotive stress analysis to space shuttle
-				orbital dynamics, and from molecular biology to automated manufacturing.
-			However, modern applications within the engineering/scientific area are moving away from
-				conventional numerical algorithms.
-			Computer-aided design, system simulation, and other interactive applications have begun to take on
-				real time and even system software characteristics.
-
-		\item \textbf{Embedded software} \\
-			It resides within a product or system and is used to implement and control features and functions
-				for the end user and for the system itself.
-			Embedded software can perform limited and esoteric functions (key pad control for a microwave oven)
-				or provide significant function and control capability (digital functions in an automobile such
-				as fuel control, dashboard displays, and braking systems).
-
-		\item \textbf{Product-line software} \\
-			Designed to provide a specific capability for use by many different customers.
-			Product-line software can focus on a limited and esoteric marketplace (e.g., inventory control
-			products) or address mass  consumer markets (e.g., word processing, spreadsheets, computer graphics,
-			multimedia, entertainment, database management, and personal and business financial applications).
-
-		\item \textbf{Web applications} \\
-			``Web Apps" is a network-centric software category spans a wide array of applications.
-			In their simplest form, Web Apps can be little more than a set of linked hypertext files that
-			present information using text and limited graphics.
-			However, as Web 2.0 emerges, Web Apps are evolving into sophisticated computing environments that
-			not only provide standalone features, computing functions, and content to the end user, but also are
-			integrated with corporate databases and business applications.
-
-		\item \textbf{Artificial intelligence software} \\
-			makes use of nonnumerical algorithms to solve complex problems that are not amenable to computation
-			or straightforward analysis.
-			Applications within this area include robotics, expert systems, pattern recognition (image and voice
-			), artificial neural networks, theorem proving, and game playing.
-
-		\item \textbf{Open-world computing} \\
-			the rapid growth of wireless networking may soon lead to true pervasive, distributed computing.
-			The challenge for software engineers will be to develop systems and application software that will
-			allow mobile devices, personal computers, and enterprise systems to communicate across vast
-			networks.
-
-		\item \textbf{Netsourcing} \\
-			the World Wide Web is rapidly becoming a computing engine as well as a content provider.
-			The challenge for software engineers is to architect simple (e.g., personal financial planning) and
-			sophisticated applications that provide a benefit to targeted end-user markets worldwide.
-
-		\item \textbf{Open source} \\
-			a growing trend that results in distribution of source code for systems applications (operating
-			systems, database, and development environments) so that many people can contribute to its
-			development.
-			The challenge for software engineers is to build source code that is self-descriptive, but more
-			importantly, to develop techniques that will enable both customers and developers to know what
-			changes have been made and how those changes manifest themselves within the software.
+		\item Application software
+			\begin{itemize}
+				\item Standalone programs that solve a specific business need.
+				\item Applications in this area process business or technical data in a way that facilitates
+					business operations or management / technical decision making.
+				\item In addition to conventional data processing applications, application software is used to
+					control business functions in real time like
+				\begin{itemize}
+					\item point of sale transaction processing
+					\item real time manufacturing process control
+				\end{itemize}
+			\end{itemize}
+		\item Engineering / scientific software
+			\begin{itemize}
+				\item It has been characterized by ``number crunching" algorithms.
+				\item Applications range from astronomy to volcanology, from automotive stress analysis to space
+					shuttle orbital dynamics, and from molecular biology to automated manufacturing.
+				\item However, modern applications within the engineering / scientific area are moving away from
+					conventional numerical algorithms.
+				\item Computer aided design, system simulation, and other interactive applications have begun to
+					take on real time and even system software characteristics.
+			\end{itemize}
+		\item Embedded software
+			\begin{itemize}
+				\item It resides within a product or system and is used to implement and control features and
+					functions for the end user and for the system itself.
+				\item Embedded software can perform limited and esoteric functions (key pad control for a
+					microwave oven) or provide significant function and control capability (digital functions in
+					an automobile such as fuel control, dashboard displays, and braking systems).
+			\end{itemize}
+		\item Productline software
+			\begin{itemize}
+				\item Designed to provide a specific capability for use by many different customers.
+				\item Productline software can focus on a limited and esoteric marketplace like inventory
+					control products or address mass  consumer markets like
+				\begin{itemize}
+					\item Word processing
+					\item Spreadsheets
+					\item Computer graphics
+					\item Multimedia
+					\item Entertainment
+					\item Database management
+					\item Personal and business financial applications
+				\end{itemize}
+			\end{itemize} \newpage
+		\item Web applications
+			\begin{itemize}
+				\item ``Web Apps" is a network centric software category spans a wide array of applications.
+				\item In their simplest form, Web Apps can be little more than a set of linked hypertext files
+					that present information using text and limited graphics.
+				\item Web Apps are evolving into sophisticated computing environments that not only provide
+					standalone features, computing functions, and content to the end user, but also are
+					integrated with corporate databases and business applications.
+			\end{itemize}
+		\item Artificial intelligence software
+			\begin{itemize}
+				\item It makes use of nonnumerical algorithms to solve complex problems that are not amenable to
+					computation or straightforward analysis.
+				\item Applications within this area include robotics, expert systems, pattern recognition (image
+					and voice), artificial neural networks, theorem proving, and game playing.
+			\end{itemize}
+		\item Open world computing
+			\begin{itemize}
+				\item The rapid growth of wireless networking may soon lead to true pervasive, distributed
+					computing.
+				\item The challenge for software engineers will be to develop systems and application software
+					that will allow mobile devices, personal computers, and enterprise systems to communicate
+					across vast networks.
+			\end{itemize}
+		\item Netsourcing
+			\begin{itemize}
+				\item The World Wide Web is rapidly becoming a computing engine as well as a content provider.
+				\item The challenge for software engineers is to architect simple i.e personal financial
+					planning and sophisticated applications that provide a benefit to targeted end user markets
+					worldwide.
+			\end{itemize}
+		\item Open source
+			\begin{itemize}
+				\item A growing trend that results in distribution of source code for systems applications
+				\begin{itemize}
+					\item Operating systems
+					\item Database
+					\item Development environments
+				\end{itemize}
+					so that many people can contribute to its development.
+				\item The challenge for software engineers is to build source code that is self descriptive,
+					but more importantly, to develop techniques that will enable both customers and developers
+					to know what changes have been made and how those changes manifest themselves within the
+					software.
+			\end{itemize}
 	\end{enumerate}
+
+	\subsubsection{Legacy Software}
+	Legacy software systems were developed decades ago and have been continually modified to meet changes in
+	business requirements and computing platforms.
+	The proliferation of such systems is causing headaches for large organizations who find them costly to
+	maintain and risky to evolve. \\
+
+	\noindent As time passes, legacy systems often evolve for one or more of the following reasons :
+	\begin{itemize}
+		\item The software must be adapted to meet the needs of new computing environments or technology
+		\item The software must be enhanced to implement new business requirements
+		\item The software must be extended to make it interoperable with other more modern systems or databases
+		\item The software must be re-architected to make it viable within a network environment
+	\end{itemize} \newpage
+
+	\subsection{The unique nature of Web Apps}
+	\begin{enumerate}
+		\item Network intensiveness
+			\begin{itemize}
+				\item A Web App resides on a network and must serve the needs of a diverse community of clients.
+				\item The network may enable worldwide access and communication (by Internet) or more limited
+					access and communication (corporate intranet).
+			\end{itemize}
+		\item Concurrency
+			\begin{itemize}
+				\item A large number of users may access the Web App at one time.
+				\item In many cases, the patterns of usage among end users will vary greatly.
+					Unpredictable load.
+				\item The number of users of the Web App may vary by orders of magnitude from day to day.
+				\item One hundred users may show up on Monday; 10,000 may use the system on Thursday.
+			\end{itemize}
+		\item Performance
+			\begin{itemize}
+				\item If a Web App user must wait too long (for access, for serverside processing, for
+					clientside formatting and display), he or she may decide to go elsewhere.
+			\end{itemize}
+		\item Availability
+			\begin{itemize}
+				\item Although expectation of 100 percent availability is unreasonable, users of popular Web
+					Apps often demand access on a 24 $\times$ 7 / 365 basis.
+				\item Users in Australia or Asia might demand access during times when traditional domestic
+					software applications in North America might be taken offline for maintenance.
+			\end{itemize}
+		\item Data driven
+			\begin{itemize}
+				\item The primary function of many Web Apps is to use hypermedia to present text, graphics,
+					audio, and video content to the end user.
+				\item In addition, Web Apps are commonly used to access information that exists on databases
+					that are not an integral part of the Web based environment (e-commerce or financial
+					applications).
+			\end{itemize}
+		\item Content sensitive
+			\begin{itemize}
+				\item The quality and aesthetic nature of content remains an important determinant of the
+					quality of a Web App
+			\end{itemize}
+		\item Continuous evolution
+			\begin{itemize}
+				\item Unlike conventional application software that evolves over a series of planned,
+					chronologically spaced releases, Web applications evolve continuously.
+				\item It is not unusual for some Web Apps (specifically, their content) to be updated on a
+					minute by minute schedule or for content to be independently computed for each request.
+			\end{itemize}
+		\item Immediacy
+			\begin{itemize}
+				\item Although immediacy the compelling need to get software to market quickly is a
+					characteristic of many application domains, Web Apps often exhibit a time to market that can
+					be a matter of a few days or weeks
+			\end{itemize}
+		\item Security
+			\begin{itemize}
+				\item Because Web Apps are available via network access, it is difficult, if not impossible, to
+					limit the population of end users who may access the application.
+				\item In order to protect sensitive content and provide secure modes of data transmission,
+					strong security measures must be implemented throughout the infrastructure that supports a
+					Web App and within the application itself.
+			\end{itemize}
+		\item Aesthetics
+			\begin{itemize}
+				\item An undeniable part of the appeal of a Web App is its look and feel.
+				\item When an application has been designed to market or sell products or ideas, aesthetics may
+					have as much to do with success as technical design.
+			\end{itemize}
+	\end{enumerate} \newpage
 
 	\subsection{Software Engineering}
 	\begin{figure}[H]
 		\centering
-		\includesvg{res/Software engineering layers}
+		\includesvg{"res/Software engineering layers"}
 		\caption{Software engineering layers}
 	\end{figure}
+
+	\noindent In order to build software that is ready to meet the challenges of the twenty first century, you
+	must recognize a few simple realities :
+	\begin{itemize}
+		\item Software has become deeply embedded in virtually every aspect of our lives, and as a consequence,
+				the number of people who have an interest in the features and functions provided by a specific
+				application has grown dramatically.
+			\begin{itemize}
+				\item When a new application or embedded system is to be built, many voices must be heard.
+				\item It sometimes seems that each of them has a slightly different idea of what software
+					features and functions should be delivered.
+				\item It follows that a concerted effort should be made to understand the problem before a
+					software solution is developed.
+			\end{itemize}
+		\item The information technology requirements demanded by individuals, businesses, and governments grow
+			increasing complex with each passing year.
+			\begin{itemize}
+				\item Large teams of people now create computer programs that were once built by a single
+					individual.
+				\item Sophisticated software that was once implemented in a predictable, self contained,
+					computing environment is now embedded inside everything from consumer electronics to medical
+					devices to weapons systems.
+				\item The complexity of these new computer based systems and products demands careful attention
+					to the interactions of all system elements.
+				\item It follows that design becomes a pivotal activity.
+			\end{itemize}
+		\item Individuals, businesses, and governments increasingly rely on software for strategic and tactical
+			decision making as well as day to day operations and control.
+			\begin{itemize}
+				\item If the software fails, people and major enterprises can experience anything from minor
+					inconvenience to catastrophic failures.
+				\item It follows that software should exhibit high quality.
+			\end{itemize}
+		\item As the perceived value of a specific application grows, the likelihood is that its user base and
+			longevity will also grow.
+			\begin{itemize}
+				\item As its user base and time in use increase, demands for adaptation and enhancement will
+					also grow.
+				\item It follows that software should be maintainable.
+			\end{itemize}
+	\end{itemize}
+
 	\subsection{The software Process}
+	\subsubsection{Definitions}
+	\begin{enumerate}
+		\item Process \\
+			It is a collection of activities, actions, and tasks that are performed when some work product is to
+				be created.
+		\item Activity \\
+			It strives to achieve a broad objective i.e communication with stakeholders and is applied
+				regardless of the application domain, size of the project, complexity of the effort, or degree
+				of rigor with which software engineering is to be applied.
+		\item Action \\
+			An architectural design encompasses a set of tasks that produce a major work product i.e an
+				architectural design model.
+		\item Task \\
+			It focuses on a small, but well defined objective i.e conducting a unit test that produces a
+				tangible outcome.
+	\end{enumerate} \newpage
+
+	\subsubsection{Process framework}
+	A process framework establishes the foundation for a complete software engineering process by identifying a
+	small number of framework activities that are applicable to all software projects, regardless of their size
+	or complexity.
+	In addition, the process framework encompasses a set of umbrella activities that are applicable across the
+	entire software process. \\
+
+	\noindent A generic process framework for software engineering encompasses five activities :
+	\begin{enumerate}
+		\item Communication
+			\begin{itemize}
+				\item Before any technical work can commence, it is critically important to communicate and
+					collaborate with the customer and other stakeholders.
+				\item The intent is to understand stakeholder's objectives for the project and to gather
+					requirements that help define software features and functions.
+			\end{itemize}
+		\item Planning
+			\begin{itemize}
+				\item Any complicated journey can be simplified if a map exists.
+				\item A software project is a complicated journey, and the planning activity creates a ``map"
+					that helps guide the team as it makes the journey.
+				\item The map called a software project plan defines the software engineering work by describing
+					the technical tasks to be conducted, the risks that are likely, the resources that will be
+					required, the work products to be produced, and a work schedule.
+			\end{itemize}
+		\item Modeling
+			\begin{itemize}
+				\item Whether you're a landscaper, a bridge builder, an aeronautical engineer, a carpenter, or
+					an architect, you work with models every day.
+				\item You create a ``sketch" of the thing so that you'll understand the big picture what it will
+					look like architecturally, how the constituent parts fit together, and many other
+					characteristics.
+				\item If required, you refine the sketch into greater and greater detail in an effort to better
+					understand the problem and how you're going to solve it.
+				\item A software engineer does the same thing by creating models to better understand software
+					requirements and the design that will achieve those requirements.
+			\end{itemize}
+		\item Construction
+			\begin{itemize}
+ 				\item This activity combines code generation either manual or automated and the testing that is
+					required to uncover errors in the code.
+			\end{itemize}
+		\item Deployment
+			\begin{itemize}
+				\item The software as a complete entity or as a partially completed increment is delivered to
+					the customer who evaluates the delivered product and provides feedback based on the
+					evaluation.
+			\end{itemize}
+	\end{enumerate}
+
 	\subsection{Software Engineering Practice}
 	\subsection{Software Myths}
 
@@ -296,4 +473,8 @@
 	\subsubsection{Specialized process models}
 	\subsection{Unified Process}
 	\subsection{Personal and Team process models}
+	\newpage \thispagestyle{empty}
+	\vspace*{\fill}
+		\centering \emph{\large This page left blank intentionally}
+	\vspace*{\fill}
 \end{document}

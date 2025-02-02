@@ -1,0 +1,97 @@
+\documentclass{article}
+
+% packages
+\usepackage[margin=.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% details
+\author{koku17}
+\title{EVS Model QP}
+
+% ricing
+\def \darkmode{1}
+\if1\darkmode
+	\pagecolor{black}
+	\color{white}
+\fi
+
+% presets
+
+% macro
+\def \qa#1#2#3#4#5#6{
+	\item #1
+	\begin{enumerate}[label=\alph*)]
+		\begin{minipage}{.5\textwidth}
+			\item #2
+			\item #4
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.5\textwidth}
+			\item #3
+			\item #5
+		\end{minipage}
+	\end{enumerate}
+	\item[$\to$]
+		\if#6a a) #2 \fi
+		\if#6b b) #3 \fi
+		\if#6c c) #4 \fi
+		\if#6d d) #5 \fi
+}
+
+\def \lqa#1#2#3#4#5#6{
+	\item #1
+		\begin{enumerate}[label=\alph*)]
+			\item #2
+			\item #3
+			\item #4
+			\item #5
+		\end{enumerate}
+	\item[$\to$]
+		\if#6a a) #2 \fi
+		\if#6b b) #2 \fi
+		\if#6c c) #2 \fi
+		\if#6d d) #2 \fi
+}
+
+\begin{document}
+	\begin{enumerate}[label=\arabic*.]
+		\lqa{Habitat refers to}{
+			Physical conditions of the place where organisms live
+		}{
+			Chemical conditions of the place where organisms live
+		}{
+			Both a \& b
+		}{
+			None of a or b
+		}{c}
+
+		\qa{
+			Which of the following energy has the greatest potential among all the sources of renewable energy ?
+		}{Solar energy}{Wind Energy}{Thermal energy}{Hydro electrical energy}{d}
+
+		\qa{
+			The term `Environment' has been derived from the French word which means to encircle or surround
+		}{Environ}{Oikos}{geo}{Aqua}{a}
+
+		\lqa{Which of the following statements is false ?}{
+			Inorganic nutrients are recycled in an ecosystem
+		}{
+			Energy `flows' through the ecosystem in the form of carbon-carbon bonds
+		}{
+			Energy is recycled in an ecosystem
+		}{
+			Respiration process releases energy
+		}{a}
+		\lqa{In terms of greenhouse gas emissions, how good or bad is hydrogen fuel ?}{
+			Major contributor of greenhouse gas emissions
+		}{
+			Zero-emission fuel
+		}{
+			Lowest contributor of greenhouse gas emissions
+		}{
+			Hydrogen cannot be used as fuel
+		}
+	\end{enumerate}
+\end{document}
+

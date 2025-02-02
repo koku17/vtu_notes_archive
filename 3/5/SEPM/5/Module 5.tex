@@ -1,0 +1,120 @@
+\documentclass{article}
+
+%!TEX program=xelatex
+
+% package
+\usepackage[margin=.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{newtxtext,newtxmath}
+
+% details
+\author{koku17}
+\title{Module 5}
+
+% presets
+\hypersetup{hidelinks}
+\usetikzlibrary{
+	arrows.meta,
+	shapes.geometric,
+	positioning
+}
+\def \contentsname{Index}
+\def \listfigurename{Figures}
+\def \listtablename{Tables}
+\titleformat*{\section}{\LARGE}
+\titleformat*{\subsection}{\Large}
+\titleformat*{\subsubsection}{\large}
+
+% ricing
+\def \darkmode{1}
+
+\if\darkmode1
+	\pagecolor{black}
+	\color{white}
+\fi
+
+% macro
+\def \answer{\item [$\rightarrow$]}
+
+\begin{document}
+	\pagenumbering{gobble}
+	\pdfbookmark[1]{Title}{Title}     \maketitle       \newpage
+	\pagenumbering{roman}
+	\pdfbookmark[1]{Index}{Index}     \tableofcontents \newpage
+	\pdfbookmark[1]{Figures}{Figures} \listoffigures   \newpage
+	\pdfbookmark[1]{Tables}{Tables}   \listoftables    \newpage
+	\pagenumbering{arabic}
+
+	\section{Software Quality}
+	\subsection{Introduction}
+	\begin{itemize}
+		\item While quality is generally agreed to be a good thing', in practice what is meant by the 'quality'
+			of a system can be vague.
+		\item We need to define precisely what qualities we require of a system.
+		\item However, we need to go further we need to judge objectively whether a system meets our quality
+			requirements and this needs measurement.
+		\item This would be of particular concern to someone like Brigette at Brightmouth College in the process
+			of selecting a package.
+		\item For someone - like Amanda at IOE - who is developing software, waiting until the system exists
+			before measuring it would be leaving things rather late.
+		\item Amanda might want to assess the likely quality of the final system while it was still under
+			development, and also to make sure that the development methods used would produce that quality.
+		\item This leads to a different emphasis - rather than concentrating on the quality of the final system,
+			a potential customer for software might check that the suppliers were using the best development
+			methods.
+	\end{itemize}
+
+	\subsection{The place of software quality in project planning}
+	Quality will be of concern at all stages of project planning and execution, but will be of particular intere the following points in the Step Wise framework as shown in the figure.
+	\begin{enumerate}[label=\textbf{Step \arabic* :},leftmargin=3.75em]
+		\item \textbf{Identify project scope and objectives}
+		\begin{itemize}[leftmargin=0em,label=]
+			\item Some objectives could relate to the qualities of the application to be delivered.
+		\end{itemize}
+		\item \textbf{Identify project infrastructure}
+		\begin{itemize}[leftmargin=0em]
+			\item Within this step activity 2.2 identifies installation standards and procedures.
+			\item Some of these will almost certainly be about quality.
+		\end{itemize}
+		\item \textbf{Analyze project characteristics}
+		\begin{itemize}[leftmargin=0em]
+			\item In activity 3.2 ('Analyze other project characteristics including quality based ones') the
+				application to be implemented is examined to see if it has any special quality requirements.
+			\item If, for example, it is safety critical then a range of activities could be added, such as
+				$n$-version development where a number of teams develop versions of the same software which
+				are then run in parallel with the outputs being crosschecked for discrepancies.
+		\end{itemize}
+		\item \textbf{Identify the products and activities of the project}
+		\begin{itemize}[leftmargin=0em,label=]
+			\item It is at this point that the entry, exit and process requirements are identified for each
+				activity.
+		\end{itemize} \setcounter{enumi}{7}
+		\item \textbf{Review and publicize plan}
+		\begin{itemize}[leftmargin=0em,label=]
+			\item At this stage the overall quality aspects of the project plan are reviewed.
+		\end{itemize}
+	\end{enumerate}
+
+	\subsection{Importance of software quality}
+	\subsection{Defining software quality}
+	\subsection{Software quality models}
+	\subsection{product versus process quality management}
+
+	\section{Software Project Estimation}
+	\subsection{Observations on Estimation}
+	\subsection{Decomposition Techniques}
+	\subsection{Empirical Estimation Models}
+
+	\newpage \thispagestyle{empty}
+	\vspace*{\fill}
+		\centering \emph{\large This page left blank intentionally}
+	\vspace*{\fill}
+\end{document}

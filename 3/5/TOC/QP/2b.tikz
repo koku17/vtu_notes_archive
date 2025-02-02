@@ -1,0 +1,16 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node[initial,state]               (q0) {$q_0$}
+			node[state,right of=q0]           (q1) {$q_1$}
+			node[state,right of=q1,accepting] (q2) {$q_2$}
+			
+			(q0) edge[loop above] node {1} (q0)
+			(q1) edge[loop above] node {0} (q1)
+			(q0) edge[above] node {0} (q1)
+			(q1) edge[above] node {1} (q2)
+		;
+	\end{tikzpicture} \\
+	Accepting all strings with substring 01
+\end{figure}

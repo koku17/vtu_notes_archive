@@ -1,0 +1,58 @@
+\documentclass{article}
+
+%!TEX program = xelatex
+
+% packages
+\usepackage{geometry}
+\usepackage{pdfpages}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{newtx}
+
+% details
+\author{koku17}
+\title{SEPM Textbook notes}
+
+% presets
+\hypersetup{hidelinks}
+\def \contentsname{\hfill {\normalfont Index} \hspace*{\fill}}
+\def \cftsecpagefont{\normalfont}
+\def \cftsecfont{\normalfont}
+\titleformat*{\section}{\LARGE}
+\titleformat*{\subsection}{\Large}
+\titleformat*{\subsubsection}{\large}
+
+% macro
+\def \module#1{
+	\vspace*{\fill} \thispagestyle{empty}
+		\begin{center}
+			\phantomsection \Huge Module #1 \addcontentsline{toc}{section}{Module #1}
+		\end{center}
+	\vspace*{\fill}
+}
+
+\def \ftb{../TB/Software Engineering A Practitioner's Approach 7th Edition - Roger Pressman.pdf}
+\def \stb{../TB/software-project-management-bob-hughes-mike-cotterell-rajib-mall-6e_compress.pdf}
+
+\begin{document}
+	\thispagestyle{empty} \pdfbookmark[1]{Title}{Title} \maketitle \newpage
+	\pagenumbering{roman} \pdfbookmark[1]{Index}{Index} \tableofcontents \newpage
+	\pagenumbering{arabic}
+	\module{1}
+	\includepdf[pages={32-53,60-85}]{\ftb} \newpage
+
+	\module{2}
+	\includepdf[pages={149-174,178-211,215-227}]{\ftb} \newpage
+
+	\module{3}
+	\includepdf[pages={96-120,126-144}]{\ftb} \newpage
+
+	\module{4}
+	\includepdf[pages={8-32,42-53}]{\stb} \newpage
+
+	\module{5}
+	\includepdf[pages={334-338,346-347}]{\stb}
+	\includepdf[pages={726-741}]{\ftb}
+\end{document}

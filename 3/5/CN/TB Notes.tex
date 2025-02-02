@@ -1,0 +1,56 @@
+\documentclass{article}
+
+%!TEX program = xelatex
+
+% packages
+\usepackage{geometry}
+\usepackage{pdfpages}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{newtx}
+
+% details
+\author{koku17}
+\title{CN Textbook notes}
+
+% presets
+\hypersetup{hidelinks}
+\def \contentsname{\hfill {\normalfont Index} \hspace*{\fill}}
+\def \cftsecpagefont{\normalfont}
+\def \cftsecfont{\normalfont}
+\titleformat*{\section}{\LARGE}
+\titleformat*{\subsection}{\Large}
+\titleformat*{\subsubsection}{\large}
+
+% macro
+\def \module#1{
+	\vspace*{\fill} \thispagestyle{empty}
+		\begin{center}
+			\phantomsection \Huge Module #1 \addcontentsline{toc}{section}{Module #1}
+		\end{center}
+	\vspace*{\fill}
+}
+
+\def \tb{../TB/Data Communication and Networking 5th Edition By Behrouz A Frouzen ( PDFDrive ).pdf}
+
+\begin{document}
+	\thispagestyle{empty} \pdfbookmark[1]{Title}{Title} \maketitle \newpage
+	\pagenumbering{roman} \pdfbookmark[1]{Index}{Index} \tableofcontents \newpage
+	\pagenumbering{arabic}
+	\module{1}
+	\includepdf[pages={43-58,71-85,225-241,252-261}]{\tb} \newpage
+
+	\module{2}
+	\includepdf[pages={297-321,333-358,365-383}]{\tb} \newpage
+
+	\module{3}
+	\includepdf[pages={551-561,567-585,713-717,635-670,692-693}]{\tb} \newpage
+
+	\module{4}
+	\includepdf[pages={731-766,782-795,799-825}]{\tb} \newpage
+
+	\module{5}
+	\includepdf[pages={857-871,911-960}]{\tb}
+\end{document}

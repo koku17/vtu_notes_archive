@@ -1,0 +1,20 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw
+			node [state,initial]               (q0) {q0}
+			node [state,right of=q0]           (q1) {q1}
+			node [state,right of=q1]           (q2) {q2}
+			node [state,right of=q2,accepting] (q3) {q3}
+	
+			\foreach[count=\j] \i in {0,...,3} {
+				\ifnum4>\j
+					(q\i) edge[above] node {$\varepsilon$} (q\j)
+				\fi
+				\ifnum3>\i
+					(q\i) edge[loop above] node {$\char\the\numexpr97+\i\relax$} (q\i)
+				\fi
+			}
+		;
+	\end{tikzpicture}
+\end{figure}

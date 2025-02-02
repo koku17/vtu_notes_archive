@@ -1,0 +1,23 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=1in]
+		\draw
+			node[state,initial]                       (q0)     {$q_0$}
+			node[state,above right of=q0]             (q0q1)   {$\{q_0,q_1\}$}
+			node[state,below right of=q0]             (q1)     {$q_1$}
+			node[state,accepting,above right of=q0q1] (q0q1q2) {$\{q_0,q_1,q_2\}$}
+			node[state,accepting,below right of=q0q1] (q1q2)   {$\{q_1,q_2\}$}
+			node[state,accepting,right of=q1]         (q2)     {$q_2$}
+
+			(q0) edge[above left] node {0} (q0q1)
+			(q0) edge[below left] node {1} (q1)
+			(q0q1) edge[above left] node {0} (q0q1q2)
+			(q0q1) edge[below left] node {1} (q1q2)
+			(q0q1q2) edge[loop above] node {0} (q0q1q2)
+			(q0q1q2) edge[right] node {1} (q1q2)
+			(q1q2) edge[right] node {$0,1$} (q2)
+			(q1) edge[below] node {$0,1$} (q2)
+			(q2) edge[loop below] node {$1$} (q2)
+		;
+	\end{tikzpicture}
+\end{figure}
